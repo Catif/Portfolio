@@ -1,9 +1,7 @@
 <script setup></script>
 
-<template></template>
+<template>
+  <h1>Home</h1>
+</template>
 
-<style lang="scss">
-body {
-  background-color: red;
-}
-</style>
+<style lang="scss"></style>
