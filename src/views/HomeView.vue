@@ -4,8 +4,4 @@
   <h1>Home</h1>
 </template>
 
-<style lang="scss">
-h1 {
-  color: $color-font-primary;
-}
-</style>
+<style lang="scss"></style>
