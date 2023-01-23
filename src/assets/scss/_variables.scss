@@ -1,8 +1,11 @@
-$color-background: hsl(236, 95%, 13%);
+$color-background: #0c0c0c;
 
 $color-font: hsl(231, 50%, 80%);
 $color-font-primary: hsl(231, 50%, 80%);
-$color-link: hsl(232, 86%, 44%);
+$color-link: hsl(162, 50%, 50%);
+$color-link-hover: hsl(162, 50%, 60%);
+$color-link-nav: hsl(98, 50%, 50%);
+$color-link-nav-hover: hsl(98, 50%, 60%);
 
 $font-family: 'Source Sans Pro', sans-serif;
-$font-family-code: 'Source Code Pro', sans-serif;
+$font-family-mono: 'Source Code Pro', sans-serif;
