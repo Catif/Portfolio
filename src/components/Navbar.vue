@@ -35,8 +35,9 @@ function changeRoute(name) {
 
 <style lang="scss" scoped>
 nav {
-  background: rgba(0, 0, 0, 0.3);
+  background: $color-background-nav;
   display: flex;
+  position: sticky;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
@@ -49,7 +50,7 @@ nav {
     font-weight: 600;
 
     #user {
-      color: #16c60c;
+      color: $color-link;
     }
 
     #colon {
@@ -57,7 +58,7 @@ nav {
     }
 
     #action {
-      color: #3b78ff;
+      color: $color-link-nav;
     }
   }
 
@@ -84,7 +85,7 @@ nav {
     }
     a {
       padding: 0px 10px;
-      color: #3b78ff;
+      color: $color-link-nav;
     }
   }
 }
