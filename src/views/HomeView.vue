@@ -30,7 +30,7 @@ main {
         color: $color-font;
       }
       h3 {
-        background-position: 50%;
+        background-position: 50% 50%;
         background-color: #66aeab;
         background-image: url("/img/background-name.gif");
         background-clip: text;

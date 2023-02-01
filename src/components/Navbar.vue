@@ -24,11 +24,10 @@ function changeRoute(name) {
 
     <div id="menu">
       <span>cd</span>
-      <router-link to="/" @click="changeRoute('')">Who I'm ?</router-link>
-      <router-link to="/portfolio" @click="changeRoute('Portfolio')">Portfolio</router-link>
-      <router-link to="/blog" @click="changeRoute('Blog')">Blog</router-link>
-      <router-link to="/cv" @click="changeRoute('CV')">CV</router-link>
-      <router-link to="/contact" @click="changeRoute('Contact')">Contact</router-link>
+      <router-link to="/" @click="changeRoute('')">home</router-link>
+      <router-link to="/portfolio" @click="changeRoute('portfolio')">portfolio</router-link>
+      <router-link to="/blog" @click="changeRoute('blog')">blog</router-link>
+      <router-link to="/contact" @click="changeRoute('contact')">contact</router-link>
     </div>
   </nav>
 </template>
@@ -65,7 +64,7 @@ nav {
   #menu {
     font-family: $font-family-mono;
     display: flex;
-    gap: 15px;
+    gap: 20px;
     font-size: 1.3rem;
     font-weight: 600;
 
