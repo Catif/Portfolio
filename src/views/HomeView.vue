@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, inject } from "vue";
 
 const listRows = ref([
 	{ text: "# Welcome" },
@@ -22,6 +22,27 @@ const listRows = ref([
 	{ text: "- Flutter / Dart" },
 	{ text: " " },
 ]);
+
+const disabledActions = ref(false);
+const confetti = inject("confetti");
+
+function runConffeti() {
+	if (disabledActions.value) return;
+	disabledActions.value = true;
+
+	const limitedInterval = setInterval(() => {
+		confetti.addConfetti({
+			confettiColors: ["#3d7eff", "#62aaa5", "#455555"],
+			confettiRadius: 5,
+			confettiNumber: 700,
+		});
+	}, 100);
+
+	setTimeout(() => {
+		disabledActions.value = false;
+		clearTimeout(limitedInterval);
+	}, 300);
+}
 </script>
 
 <template>
@@ -41,9 +62,9 @@ const listRows = ref([
 				<header>
 					<p class="title">README.md</p>
 					<div id="list-action">
-						<div id="close"></div>
-						<div id="reduct"></div>
-						<div id="full"></div>
+						<div id="close" title="DON'T CLICK !" @click="runConffeti"></div>
+						<div id="reduct" title="DON'T CLICK !" @click="runConffeti"></div>
+						<div id="full" title="DON'T CLICK !" @click="runConffeti"></div>
 					</div>
 				</header>
 				<div class="list-rows">
@@ -149,6 +170,7 @@ main {
 						width: 12px;
 						height: 12px;
 						border-radius: 50%;
+						cursor: pointer;
 					}
 
 					#close {
@@ -214,6 +236,20 @@ main {
 						}
 					}
 				}
+			}
+
+			::-webkit-scrollbar {
+				width: 12px;
+			}
+			::-webkit-scrollbar-track {
+				background: hsl(229, 0%, 20%);
+			}
+			::-webkit-scrollbar-thumb {
+				background: hsla(0, 0%, 0%, 30%);
+				border-radius: 0px;
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background: #555;
 			}
 		}
 	}
