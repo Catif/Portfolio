@@ -25,7 +25,7 @@ const projects = reactive([
 		id: 3,
 		name: "Atelier 1 - Photomedia",
 		description:
-			"You know <a href=\"https://www.pinterest.fr/\">Pinterest</a> ? This is a little clone of it. You can publish your own pictures and watch other people's pictures.<br> You can create galeries or join other people's galeries and being a contributor of it.",
+			"You know <a href=\"https://www.pinterest.fr/\">Pinterest</a> ? This is a little clone of it. You can publish your own pictures and watch other people's pictures.<br> You can also create galeries or join other people's galeries and being a contributor of it.",
 		technologies: ["PHP", "JavaScript", "SASS", "MySQL"],
 		picture: "https://i.imgur.com/htfTxvO.jpeg",
 		github: "https://github.com/Catif/LP1-CIASIE_Atelier1",

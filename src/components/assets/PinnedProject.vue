@@ -59,6 +59,8 @@ const oddOrEven = props.project.id % 2 ? "odd" : "even";
 		height: auto;
 		overflow: hidden;
 		border-radius: 5px;
+
+		aspect-ratio: 16 / 9;
 		img {
 			width: 100%;
 			height: 100%;
