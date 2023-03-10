@@ -1,10 +1,12 @@
 <script setup>
 import Presentation from "@/components/Presentation.vue";
+import PinnedProjects from "@/components/PinnedProjects.vue";
 </script>
 
 <template>
 	<main>
 		<Presentation />
+		<PinnedProjects />
 	</main>
 </template>
 
