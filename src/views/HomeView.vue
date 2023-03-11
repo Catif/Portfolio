@@ -8,6 +8,7 @@ import Blog from "../components/Blog.vue";
 	<article>
 		<Presentation />
 		<PinnedProjects />
+		<Blog />
 	</article>
 </template>
 
