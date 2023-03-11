@@ -5,42 +5,23 @@ const props = defineProps({
 		required: true,
 	},
 });
-
-const oddOrEven = props.project.id % 2 ? "odd" : "even";
 </script>
 
 <template>
 	<div class="pinnedProject">
-		<template v-if="oddOrEven === 'odd'">
-			<div class="pinnedProject__image">
-				<img :src="project.picture" alt="project image" />
+		<div class="pinnedProject__image">
+			<img :src="project.picture" alt="project image" />
+		</div>
+		<div class="pinnedProject__description">
+			<h3>{{ project.name }}</h3>
+			<p v-html="project.description"></p>
+			<div class="pinnedProject__description__technologies">
+				<span v-for="technology in project.technologies" :key="technology">
+					{{ technology }}
+				</span>
 			</div>
-			<div class="pinnedProject__description">
-				<h3>{{ project.name }}</h3>
-				<p v-html="project.description"></p>
-				<div class="pinnedProject__description__technologies">
-					<span v-for="technology in project.technologies" :key="technology">
-						{{ technology }}
-					</span>
-				</div>
-				<a :href="project.github" target="_blank"><img src="/img/github-mark.svg" />Github</a>
-			</div>
-		</template>
-		<template v-else>
-			<div class="pinnedProject__description">
-				<h3>{{ project.name }}</h3>
-				<p v-html="project.description"></p>
-				<div class="pinnedProject__description__technologies">
-					<span v-for="technology in project.technologies" :key="technology">
-						{{ technology }}
-					</span>
-				</div>
-				<a :href="project.github" target="_blank"><img src="/img/github-mark.svg" />Github</a>
-			</div>
-			<div class="pinnedProject__image">
-				<img :src="project.picture" alt="project image" />
-			</div>
-		</template>
+			<a :href="project.github" target="_blank"><img src="/img/github-mark.svg" />Github</a>
+		</div>
 	</div>
 </template>
 
@@ -53,6 +34,10 @@ const oddOrEven = props.project.id % 2 ? "odd" : "even";
 	gap: 30px;
 	padding: 20px 0px;
 	width: 100%;
+
+	&:nth-child(even) {
+		flex-direction: row-reverse;
+	}
 	&__image {
 		width: 100%;
 		max-width: 500px;
