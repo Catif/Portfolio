@@ -62,7 +62,7 @@ const projects = reactive([
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 20px;
+		gap: 50px;
 	}
 }
 </style>

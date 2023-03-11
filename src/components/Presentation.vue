@@ -4,23 +4,23 @@ import { ref, inject } from "vue";
 const listRows = ref([
 	{ text: "# Welcome" },
 	{ text: "This is my portfolio, and I hope you will appreciate my art." },
-	{ text: " " },
+	{ text: "" },
 	{ text: "## Introduction" },
 	{
 		text: 'Currently, I am a student at "Université de Lorraine". To graduate, I need to do an intership (in your company maybe ? 👀)',
 	},
-	{ text: " " },
+	{ text: "" },
 	{ text: "## My skills" },
 	{
-		text: "I am a full stack developer, and I can do a lot of things, but I will not list them all. I will just list the most important ones.",
+		text: "I am a full stack developer, and I can do a lot of things, but I will not list them all, just the most important ones.",
 	},
-	{ text: " " },
+	{ text: "" },
 	{ text: "- HTML / CSS(SASS) / JS" },
 	{ text: "- VueJS" },
 	{ text: "- PHP / SLIM" },
 	{ text: "- MySQL / MariaDB" },
 	{ text: "- Flutter / Dart" },
-	{ text: " " },
+	{ text: "" },
 ]);
 
 const disabledActions = ref(false);
