@@ -46,7 +46,7 @@ function runConffeti() {
 </script>
 
 <template>
-	<div id="Presentation">
+	<section id="Presentation">
 		<div>
 			<div>
 				<h2>My name is</h2>
@@ -75,7 +75,7 @@ function runConffeti() {
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <style lang="scss" scoped>

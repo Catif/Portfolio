@@ -14,9 +14,9 @@ provide("confetti", confetti);
 		<Navbar />
 	</header>
 
-	<div class="container">
+	<main class="container">
 		<RouterView />
-	</div>
+	</main>
 </template>
 
 <style lang="scss">

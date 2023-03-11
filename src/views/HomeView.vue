@@ -1,19 +1,14 @@
 <script setup>
 import Presentation from "@/components/Presentation.vue";
 import PinnedProjects from "@/components/PinnedProjects.vue";
+import Blog from "../components/Blog.vue";
 </script>
 
 <template>
-	<main>
+	<article>
 		<Presentation />
 		<PinnedProjects />
-	</main>
+	</article>
 </template>
 
-<style lang="scss">
-main {
-	display: flex;
-	gap: 80px;
-	padding-top: 50px;
-}
-</style>
+<style lang="scss"></style>

@@ -17,8 +17,22 @@ a {
     }
 }
 
-main {
+article {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	padding: 50px;
+	h2 {
+		font-size: 2.3rem;
+		font-weight: 600;
+		color: $color-font;
+	}
 }
