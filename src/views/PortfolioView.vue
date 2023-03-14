@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import PinnedProjects from "@/components/PinnedProjects.vue";
+</script>
 
 <template>
-  <h1>Portfolio</h1>
+	<PinnedProjects />
 </template>
 
 <style lang="scss"></style>

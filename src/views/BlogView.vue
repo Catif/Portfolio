@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import Blog from "@/components/Blog.vue";
+</script>
 
 <template>
-  <h1>Blog</h1>
+	<Blog />
 </template>
 
 <style lang="scss"></style>

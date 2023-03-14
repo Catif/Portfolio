@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import Contact from "@/components/Contact.vue";
+</script>
 
 <template>
-  <h1>Contact</h1>
+	<Contact />
 </template>
 
 <style lang="scss"></style>
