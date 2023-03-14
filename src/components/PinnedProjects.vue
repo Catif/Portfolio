@@ -7,7 +7,7 @@ const projects = reactive([
 		id: 1,
 		name: "Projet Tutoré - Scudo",
 		description:
-			"You can stream like Twitch or Youtube, but this project is more focused on the protection of data.<br> You can record your videos on the cloud and watch it later, it is a security to not lost your video if you are in a bad position.",
+			"You can stream like Twitch or Youtube, but this project is more focused on the protection of your videos.<br> You can record your videos on the cloud and watch it later, it is a security to not lost your video if you are in a bad position.",
 		technologies: ["Slim", "MySQL", "VueJS", "WebRTC", "Docker", '(All technologies of "Streaming with web camera" project below)'],
 		picture: "https://i.imgur.com/3ZQRuxT.png",
 		github: "https://github.com/Catif/LP-PTUT_Scudo",

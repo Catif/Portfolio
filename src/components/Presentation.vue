@@ -41,7 +41,7 @@ function runConffeti() {
 	setTimeout(() => {
 		disabledActions.value = false;
 		clearTimeout(limitedInterval);
-	}, 300);
+	}, 1000);
 }
 </script>
 
