@@ -1,7 +1,7 @@
 <script setup>
 import Presentation from "@/components/Presentation.vue";
 import PinnedProjects from "@/components/PinnedProjects.vue";
-import Blog from "../components/Blog.vue";
+import Blog from "@/components/Blog.vue";
 </script>
 
 <template>
@@ -12,4 +12,8 @@ import Blog from "../components/Blog.vue";
 	</article>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+article {
+	padding-bottom: 500px;
+}
+</style>

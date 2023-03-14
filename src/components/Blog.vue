@@ -15,8 +15,4 @@
 	</section>
 </template>
 
-<style lang="scss">
-#Blog {
-	padding-bottom: 500px;
-}
-</style>
+<style lang="scss"></style>

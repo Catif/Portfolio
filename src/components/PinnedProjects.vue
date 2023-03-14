@@ -34,7 +34,7 @@ const projects = reactive([
 </script>
 
 <template>
-	<section id="Projects">
+	<section id="Projects" class="alternate-background">
 		<h2>Pinned projects</h2>
 		<div id="list-pinned-projects">
 			<PinnedProject v-for="project in projects" :key="project.id" :project="project" />
@@ -44,8 +44,6 @@ const projects = reactive([
 
 <style lang="scss" scoped>
 #Projects {
-	background-color: $color-secondary-background;
-
 	#list-pinned-projects {
 		display: flex;
 		flex-direction: column;
