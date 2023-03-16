@@ -15,7 +15,7 @@ function changeRoute(name) {
 				><span id="user">bradley@barbier</span>
 				<span id="colon">:</span>
 				<span id="action"
-					>~/<transition name="slide" mode="out-in" appear
+					>~/<transition name="fade" mode="out-in"
 						><span :key="actualRoute">{{ actualRoute + " $" }}</span></transition
 					>
 				</span>
@@ -87,15 +87,5 @@ nav {
 			color: $color-link-nav;
 		}
 	}
-}
-
-.slide-enter-active,
-.slide-leave-active {
-	transition: all 0.3s ease;
-}
-.slide-enter-from,
-.slide-leave-to {
-	transform: translateX(10px);
-	opacity: 0;
 }
 </style>

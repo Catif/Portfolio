@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-	<section id="Contact" class="alternate-background">
+	<section id="Contact">
 		<h2>Contact</h2>
 	</section>
 </template>

@@ -34,7 +34,7 @@ const projects = reactive([
 </script>
 
 <template>
-	<section id="Projects" class="alternate-background">
+	<section id="Projects">
 		<h2>Pinned projects</h2>
 		<div id="list-pinned-projects">
 			<PinnedProject v-for="project in projects" :key="project.id" :project="project" />

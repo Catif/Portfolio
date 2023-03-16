@@ -28,14 +28,6 @@ const router = createRouter({
 });
 
 router.afterEach((to, from) => {
-	const toIndex = router.options.routes.findIndex((r) => r.path === to.path);
-	const fromIndex = router.options.routes.findIndex((r) => r.path === from.path);
-	if (from.name !== undefined) {
-		to.meta.transition = toIndex < fromIndex ? "slide-right" : "slide-left";
-	} else {
-		to.meta.transition = "fade";
-	}
-
 	// scoll top smoothly
 	window.scrollTo({
 		top: 0,

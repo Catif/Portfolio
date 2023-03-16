@@ -14,11 +14,13 @@ provide("confetti", confetti);
 		<Navbar />
 	</header>
 
-	<router-view v-slot="{ Component, route }">
-		<transition :name="route.meta.transition">
-			<component :is="Component" />
-		</transition>
-	</router-view>
+	<article>
+		<router-view v-slot="{ Component }">
+			<transition name="fade" mode="out-in">
+				<component :is="Component" />
+			</transition>
+		</router-view>
+	</article>
 </template>
 
 <style lang="scss">
@@ -26,7 +28,10 @@ provide("confetti", confetti);
 @import "@/assets/scss/basic.scss";
 
 /* Animation de transition de page */
-@import "@/assets/scss/animation/slide-left.scss";
-@import "@/assets/scss/animation/slide-right.scss";
 @import "@/assets/scss/animation/fade.scss";
+
+/* temp */
+article {
+	padding-bottom: 500px;
+}
 </style>

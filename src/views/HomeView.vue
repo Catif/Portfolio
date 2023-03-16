@@ -6,16 +6,16 @@ import Contact from "@/components/Contact.vue";
 </script>
 
 <template>
-	<article>
+	<div>
 		<Presentation />
 		<PinnedProjects />
 		<Blog />
 		<Contact />
-	</article>
+	</div>
 </template>
 
-<style lang="scss">
-article {
-	padding-bottom: 500px;
+<style lang="scss" scoped>
+section:nth-child(even) {
+	background-color: $color-secondary-background;
 }
 </style>
