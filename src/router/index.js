@@ -8,33 +8,21 @@ const router = createRouter({
 			path: "/",
 			name: "home",
 			component: HomeView,
-			meta: {
-				transition: "page-transition-slide-left",
-			},
 		},
 		{
 			path: "/portfolio",
 			name: "portfolio",
 			component: () => import("@/views/PortfolioView.vue"),
-			meta: {
-				transition: "page-transition-slide-left",
-			},
 		},
 		{
 			path: "/blog",
 			name: "blog",
 			component: () => import("@/views/BlogView.vue"),
-			meta: {
-				transition: "page-transition-slide-left",
-			},
 		},
 		{
 			path: "/contact",
 			name: "contact",
 			component: () => import("@/views/ContactView.vue"),
-			meta: {
-				transition: "page-transition-slide-left",
-			},
 		},
 	],
 });
@@ -42,9 +30,11 @@ const router = createRouter({
 router.afterEach((to, from) => {
 	const toIndex = router.options.routes.findIndex((r) => r.path === to.path);
 	const fromIndex = router.options.routes.findIndex((r) => r.path === from.path);
-	to.meta.transition = toIndex < fromIndex ? "page-transition-slide-right" : "page-transition-slide-left";
-
-	console.log(to.meta.transition);
+	if (from.name !== undefined) {
+		to.meta.transition = toIndex < fromIndex ? "slide-right" : "slide-left";
+	} else {
+		to.meta.transition = "fade";
+	}
 
 	// scoll top smoothly
 	window.scrollTo({
