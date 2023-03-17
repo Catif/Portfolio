@@ -16,7 +16,7 @@ const projects = reactive([
 		id: 2,
 		name: "Streaming with web camera",
 		description:
-			'This is a project that allows you to stream your webcam with replay video store on server.<br> That is the small part of a <a href="https://github.com/Catif/LP-PTUT_Scudo" target="_blank">bigger project</a> that I am working on at school.',
+			'This is a project that allows you to stream your webcam with replay video stored on server.<br> That is the small part of a <a href="https://github.com/Catif/LP-PTUT_Scudo" target="_blank">bigger project</a> that I am working on at school.',
 		technologies: ["NodeJS", "RTCMulticonnection", "Socket.io", "WebRTC", "Docker"],
 		picture: "https://i.imgur.com/jBLx12H.gif",
 		github: "https://github.com/Catif/Record-Live-WebRTC",

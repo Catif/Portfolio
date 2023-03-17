@@ -31,7 +31,4 @@ provide("confetti", confetti);
 @import "@/assets/scss/animation/fade.scss";
 
 /* temp */
-article {
-	padding-bottom: 500px;
-}
 </style>

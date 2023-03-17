@@ -96,7 +96,7 @@ const props = defineProps({
 			bottom: 0;
 			width: 100%;
 			color: $color-font;
-			background-color: $color-background;
+			background-color: hsla(0, 0%, 30%, 0.2);
 			display: flex;
 			align-items: center;
 			justify-content: center;
