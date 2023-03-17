@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-	<section id="Contact">
+	<footer>
 		<p>
 			You can contact me at
 			<a href="mailto:bradley.barbier@outlook.fr" target="_blank"> bradley.barbier@outlook.fr</a>
@@ -11,10 +11,24 @@
 			or by
 			<a href="https://www.linkedin.com/in/bradley-barbier/" target="_blank">LinkedIn</a>
 		</p>
-	</section>
+	</footer>
 </template>
 
 <style lang="scss" scoped>
-#Contact {
+footer {
+	margin-top: auto;
+
+	background-color: $color-background-nav;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	padding: 50px;
+	h2 {
+		font-size: 2.3rem;
+		font-weight: 600;
+		color: $color-font;
+	}
 }
 </style>

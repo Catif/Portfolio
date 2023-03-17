@@ -1,5 +1,6 @@
 <script setup>
 import Navbar from "@/components/Navbar.vue";
+import Footer from "@/components/Footer.vue";
 
 import { provide } from "vue";
 import { RouterView } from "vue-router";
@@ -21,6 +22,8 @@ provide("confetti", confetti);
 			</transition>
 		</router-view>
 	</article>
+
+	<Footer />
 </template>
 
 <style lang="scss">

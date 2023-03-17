@@ -27,7 +27,6 @@ function changeRoute(name) {
 			<router-link to="/" @click="changeRoute('')">home</router-link>
 			<router-link to="/portfolio" @click="changeRoute('portfolio')">portfolio</router-link>
 			<router-link to="/blog" @click="changeRoute('blog')">blog</router-link>
-			<router-link to="/contact" @click="changeRoute('contact')">contact</router-link>
 		</div>
 	</nav>
 </template>

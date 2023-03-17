@@ -2,7 +2,6 @@
 import Presentation from "@/components/Presentation.vue";
 import PinnedProjects from "@/components/PinnedProjects.vue";
 import Blog from "@/components/Blog.vue";
-import Contact from "@/components/Contact.vue";
 </script>
 
 <template>
@@ -10,7 +9,6 @@ import Contact from "@/components/Contact.vue";
 		<Presentation />
 		<PinnedProjects />
 		<Blog />
-		<Contact />
 	</div>
 </template>
 
