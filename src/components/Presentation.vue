@@ -60,7 +60,7 @@ function runConffeti() {
 
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-evenly;
 
 	& > div {
 		width: 600px;
