@@ -1,24 +1,17 @@
 import { createApp } from "vue";
-import { createPinia } from "pinia";
-
 import App from "./App.vue";
-import router from "./router";
 
-import { createI18n } from "vue-i18n";
-import { messages } from "./locales/locales";
+import { createPinia } from "pinia";
+import i18n from "@/i18n";
+import router from "./router";
 
 const app = createApp(App);
 
-const i18n = createI18n({
-	legacy: false,
-	globalInjection: true,
-	locale: "en",
-	fallbackLocale: "fr",
-	messages,
-});
-
 app.use(createPinia());
+
+export var I18n = i18n;
+
+app.use(I18n);
 app.use(router);
-app.use(i18n);
 
 app.mount("#app");
