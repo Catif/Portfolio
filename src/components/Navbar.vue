@@ -24,9 +24,9 @@ function changeRoute(name) {
 
 		<div id="menu">
 			<span>cd</span>
-			<router-link to="/" @click="changeRoute('home')">home</router-link>
-			<router-link to="/portfolio" @click="changeRoute('portfolio')">portfolio</router-link>
-			<router-link to="/blog" @click="changeRoute('blog')">blog</router-link>
+			<router-link to="/" @click="changeRoute($t('navbar.home'))">{{ $t("navbar.home") }}</router-link>
+			<router-link to="/portfolio" @click="changeRoute($t('navbar.portfolio'))">{{ $t("navbar.portfolio") }}</router-link>
+			<router-link to="/blog" @click="changeRoute($t('navbar.blog'))">{{ $t("navbar.blog") }}</router-link>
 		</div>
 	</nav>
 </template>

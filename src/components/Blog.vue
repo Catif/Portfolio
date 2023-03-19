@@ -2,7 +2,7 @@
 
 <template>
 	<section id="Blog">
-		<h2>Blog</h2>
+		<h2>{{ $t("blog.title") }}</h2>
 		<iframe
 			width="560"
 			height="315"
