@@ -1,7 +1,14 @@
 <script setup>
+import LanguageNav from "./assets/LanguageNav.vue";
+
 import { ref } from "vue";
+import { useRoute } from "vue-router";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const actualRoute = ref("");
+const route = useRoute();
 
 function changeRoute(name) {
 	actualRoute.value = name;
@@ -24,9 +31,16 @@ function changeRoute(name) {
 
 		<div id="menu">
 			<span>cd</span>
-			<router-link to="/" @click="changeRoute($t('navbar.home'))">{{ $t("navbar.home") }}</router-link>
-			<router-link to="/portfolio" @click="changeRoute($t('navbar.portfolio'))">{{ $t("navbar.portfolio") }}</router-link>
-			<router-link to="/blog" @click="changeRoute($t('navbar.blog'))">{{ $t("navbar.blog") }}</router-link>
+			<router-link :to="{ name: 'home', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.home'))">{{
+				$t("navbar.home")
+			}}</router-link>
+			<router-link :to="{ name: 'portfolio', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.portfolio'))">{{
+				$t("navbar.portfolio")
+			}}</router-link>
+			<router-link :to="{ name: 'blog', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.blog'))">{{
+				$t("navbar.blog")
+			}}</router-link>
+			<LanguageNav />
 		</div>
 	</nav>
 </template>
