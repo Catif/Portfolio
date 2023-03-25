@@ -18,7 +18,8 @@
 		"Me": {
 			"name": "My name is",
 			"presentation": "After 4 years’ experience in web development, learnt at school and personal time. I’m able to create websites for your company. I stay connected about new technologies to use them in my new futures projects.",
-			"downloadCV": "Download my CV"
+			"downloadCV": "Download my CV",
+			"downloadCVLink": "/files/en/CV_Bradley-Barbier.pdf"
 		},
 		"IDE": {
 			"titleConfetti": "DON'T CLICK !",

@@ -18,7 +18,8 @@
 		"Me": {
 			"name": "Je m'appelle",
 			"presentation": "Après 4 ans d'expérience dans le développement web, appris à l'école et en temps personnel. Je suis capable de créer des sites web pour votre entreprise. Je reste connecté aux nouvelles technologies pour les utiliser dans mes nouveaux projets futurs.",
-			"downloadCV": "Télécharger mon CV"
+			"downloadCV": "Télécharger mon CV",
+			"downloadCVLink": "/files/fr/CV_Bradley-Barbier.pdf"
 		},
 		"IDE": {
 			"titleConfetti": "NE CLIQUEZ PAS !",

@@ -30,7 +30,7 @@ function runConffeti() {
 				<h2>{{ $t("presentation.Me.name") }}</h2>
 				<h3>Bradley Barbier</h3>
 				<p>{{ $t("presentation.Me.presentation") }}</p>
-				<a href="" id="download-CV">{{ $t("presentation.Me.downloadCV") }}</a>
+				<a :href="$t('presentation.Me.downloadCVLink')" download id="download-CV">{{ $t("presentation.Me.downloadCV") }}</a>
 			</div>
 		</div>
 		<div id="IDE">
