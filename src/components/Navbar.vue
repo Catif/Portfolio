@@ -1,104 +1,109 @@
 <script setup>
-import LanguageNav from "./assets/LanguageNav.vue";
+import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import LanguageNav from './assets/LanguageNav.vue'
 
-import { ref } from "vue";
-import { useRoute } from "vue-router";
-import { useI18n } from "vue-i18n";
+const { t } = useI18n()
 
-const { t } = useI18n();
-
-const actualRoute = ref("");
-const route = useRoute();
+const actualRoute = ref('')
+const route = useRoute()
 
 function changeRoute(name) {
-	actualRoute.value = name;
+  actualRoute.value = name
 }
 </script>
 
 <template>
-	<nav>
-		<div id="name">
-			<router-link to="/" @click="changeRoute('')"
-				><span id="user">bradley@barbier</span>
-				<span id="colon">:</span>
-				<span id="action"
-					>~/<transition name="fade" mode="out-in"
-						><span :key="actualRoute">{{ actualRoute + " $" }}</span></transition
-					>
-				</span>
-			</router-link>
-		</div>
+  <nav>
+    <div id="name">
+      <router-link to="/" @click="changeRoute('')">
+        <span id="user">bradley@barbier</span>
+        <span id="colon">:</span>
+        <span id="action">~/
+          <transition name="fade" mode="out-in">
+            <span v-if="actualRoute" :key="actualRoute">{{ `${actualRoute} $` }}</span>
+          </transition>
+        </span>
+      </router-link>
+    </div>
 
-		<div id="menu">
-			<span>cd</span>
-			<router-link :to="{ name: 'home', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.home'))">{{
-				$t("navbar.home")
-			}}</router-link>
-			<router-link :to="{ name: 'portfolio', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.portfolio'))">{{
-				$t("navbar.portfolio")
-			}}</router-link>
-			<router-link :to="{ name: 'blog', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.blog'))">{{
-				$t("navbar.blog")
-			}}</router-link>
-			<LanguageNav />
-		</div>
-	</nav>
+    <div id="menu">
+      <span>cd</span>
+      <router-link :to="{ name: 'home', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.home'))">
+        {{
+          $t("navbar.home")
+        }}
+      </router-link>
+      <router-link :to="{ name: 'portfolio', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.portfolio'))">
+        {{
+          $t("navbar.portfolio")
+        }}
+      </router-link>
+      <router-link :to="{ name: 'blog', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.blog'))">
+        {{
+          $t("navbar.blog")
+        }}
+      </router-link>
+      <LanguageNav />
+    </div>
+  </nav>
 </template>
 
 <style lang="scss" scoped>
 nav {
-	background: $color-background-nav;
-	display: flex;
-	position: sticky;
-	justify-content: space-between;
-	align-items: center;
-	padding: 20px 40px;
+  background: $color-background-nav;
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
 
-	color: $color-link-nav;
+  color: $color-link-nav;
 
-	#name {
-		font-family: $font-family-mono;
-		font-size: 1.4rem;
-		font-weight: 600;
+  #name {
+    font-family: $font-family-mono;
+    font-size: 1.4rem;
+    font-weight: 600;
 
-		#user {
-			color: hsl(120, 80%, 75%);
-		}
+    #user {
+      color: hsl(120, 80%, 75%);
+    }
 
-		#colon {
-			color: #ccc;
-		}
+    #colon {
+      color: #ccc;
+    }
 
-		#action {
-			color: $color-link-nav;
-		}
-	}
+    #action {
+      color: $color-link-nav;
+    }
+  }
 
-	#menu {
-		font-family: $font-family-mono;
-		display: flex;
-		gap: 20px;
-		font-size: 1.3rem;
-		font-weight: 600;
+  #menu {
+    font-family: $font-family-mono;
+    display: flex;
+    gap: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
 
-		&:hover {
-			a {
-				opacity: 0.5;
+    &:hover {
+      a {
+        opacity: 0.5;
 
-				&:hover {
-					opacity: 1;
-				}
-			}
-		}
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
 
-		span:first-child {
-			color: #ccc;
-			margin-right: 10px;
-		}
-		a {
-			padding: 0px 10px;
-			color: $color-link-nav;
-		}
-	}
+    span:first-child {
+      color: #ccc;
+      margin-right: 10px;
+    }
+    a {
+      padding: 0px 10px;
+      color: $color-link-nav;
+    }
+  }
 }
 </style>

@@ -1,9 +1,9 @@
 <script setup>
-import PinnedProjects from "@/components/PinnedProjects.vue";
+import PinnedProjects from '@/components/PinnedProjects.vue'
 </script>
 
 <template>
-	<PinnedProjects />
+  <PinnedProjects />
 </template>
 
 <style lang="scss"></style>

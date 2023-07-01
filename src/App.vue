@@ -1,29 +1,28 @@
 <script setup>
-import Navbar from "@/components/Navbar.vue";
-import Footer from "@/components/Footer.vue";
+import { provide } from 'vue'
+import { RouterView } from 'vue-router'
+import JSConfetti from 'js-confetti'
+import Footer from '@/components/Footer.vue'
+import Navbar from '@/components/Navbar.vue'
 
-import { provide } from "vue";
-import { RouterView } from "vue-router";
-import JSConfetti from "js-confetti";
-
-const confetti = new JSConfetti();
-provide("confetti", confetti);
+const confetti = new JSConfetti()
+provide('confetti', confetti)
 </script>
 
 <template>
-	<header>
-		<Navbar />
-	</header>
+  <header>
+    <Navbar />
+  </header>
 
-	<article>
-		<router-view v-slot="{ Component }">
-			<transition name="fade" mode="out-in">
-				<component :is="Component" />
-			</transition>
-		</router-view>
-	</article>
+  <article>
+    <RouterView v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </RouterView>
+  </article>
 
-	<Footer />
+  <Footer />
 </template>
 
 <style lang="scss">
