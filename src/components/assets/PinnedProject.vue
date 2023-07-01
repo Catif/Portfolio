@@ -10,17 +10,17 @@ const props = defineProps({
 <template>
   <div class="pinnedProject">
     <div class="pinnedProject__image">
-      <img :src="project.picture" alt="project image">
+      <img :src="props.project.picture" alt="project image">
     </div>
     <div class="pinnedProject__description">
-      <h3>{{ project.name }}</h3>
-      <p v-html="project.description" />
+      <h3>{{ props.project.name }}</h3>
+      <p v-html="props.project.description" />
       <div class="pinnedProject__description__technologies">
-        <span v-for="technology in project.technologies" :key="technology">
+        <span v-for="technology in props.project.technologies" :key="technology">
           {{ technology }}
         </span>
       </div>
-      <a :href="project.github" target="_blank"><img src="/img/github-mark.svg">Github</a>
+      <a :href="props.project.github" target="_blank"><img src="/img/github-mark.svg">Github</a>
     </div>
   </div>
 </template>

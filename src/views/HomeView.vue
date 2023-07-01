@@ -14,6 +14,6 @@ import Blog from '@/components/Blog.vue'
 
 <style lang="scss" scoped>
 section:nth-child(even) {
-	background-color: $color-secondary-background;
+  background-color: $color-secondary-background;
 }
 </style>

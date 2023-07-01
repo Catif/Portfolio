@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { I18n } from '@/main'
+import { i18n } from '@/main'
 
 import HomeView from '@/views/HomeView.vue'
 
@@ -29,7 +29,7 @@ const router = createRouter({
   ],
 })
 
-router.afterEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   // scoll top smoothly
   window.scrollTo({
     top: 0,
@@ -40,12 +40,12 @@ router.afterEach((to, from, next) => {
   const lang = to.params.lang
 
   if (['fr', 'en'].includes(lang)) {
-    I18n.global.locale.value = lang
+    i18n.global.locale.value = lang
     document.querySelector('html').setAttribute('lang', lang)
     next()
   }
   else {
-    I18n.global.locale.value = defaultLang
+    i18n.global.locale.value = defaultLang
     document.querySelector('html').setAttribute('lang', defaultLang)
     next()
   }
