@@ -3,11 +3,11 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import LanguageNav from './assets/LanguageNav.vue'
 
-const actualRoute = ref('')
+const actualRouteCodeTrad = ref('')
 const route = useRoute()
 
 function changeRoute(name) {
-  actualRoute.value = name
+  actualRouteCodeTrad.value = name
 }
 </script>
 
@@ -19,7 +19,7 @@ function changeRoute(name) {
         <span id="colon">:</span>
         <span id="action">~/
           <transition name="fade" mode="out-in">
-            <span v-if="actualRoute" :key="actualRoute">{{ `${actualRoute} $` }}</span>
+            <span v-if="actualRouteCodeTrad" :key="actualRouteCodeTrad" v-html="$t(actualRouteCodeTrad)" />
           </transition>
         </span>
       </router-link>
@@ -27,17 +27,17 @@ function changeRoute(name) {
 
     <div id="menu">
       <span>cd</span>
-      <router-link :to="{ name: 'home', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.home'))">
+      <router-link :to="{ name: 'home', params: { lang: route.params.lang } }" @click="changeRoute('navbar.home')">
         {{
           $t("navbar.home")
         }}
       </router-link>
-      <router-link :to="{ name: 'portfolio', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.portfolio'))">
+      <router-link :to="{ name: 'portfolio', params: { lang: route.params.lang } }" @click="changeRoute('navbar.portfolio')">
         {{
           $t("navbar.portfolio")
         }}
       </router-link>
-      <router-link :to="{ name: 'blog', params: { lang: route.params.lang } }" @click="changeRoute($t('navbar.blog'))">
+      <router-link :to="{ name: 'blog', params: { lang: route.params.lang } }" @click="changeRoute('navbar.blog')">
         {{
           $t("navbar.blog")
         }}
