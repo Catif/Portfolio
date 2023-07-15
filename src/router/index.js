@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { i18n } from '@/main'
+import { I18n } from '@/main'
 
 import HomeView from '@/views/HomeView.vue'
 
@@ -40,12 +40,12 @@ router.beforeEach((to, from, next) => {
   const lang = to.params.lang
 
   if (['fr', 'en'].includes(lang)) {
-    i18n.global.locale.value = lang
+    I18n.global.locale.value = lang
     document.querySelector('html').setAttribute('lang', lang)
     next()
   }
   else {
-    i18n.global.locale.value = defaultLang
+    I18n.global.locale.value = defaultLang
     document.querySelector('html').setAttribute('lang', defaultLang)
     next()
   }
