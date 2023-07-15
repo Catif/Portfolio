@@ -13,14 +13,18 @@ const props = defineProps({
       <img :src="props.project.picture" alt="project image">
     </div>
     <div class="pinnedProject__description">
-      <h3>{{ props.project.name }}</h3>
+      <h3>
+        {{ props.project.name }}
+        <img v-if="props.project.team" src="/img/icons/team.svg" alt="team icon" title="Team project">
+        <img v-else src="/img/icons/user.svg" alt="solo icon" title="Solo project">
+      </h3>
       <p v-html="props.project.description" />
       <div class="pinnedProject__description__technologies">
         <span v-for="technology in props.project.technologies" :key="technology">
           {{ technology }}
         </span>
       </div>
-      <a :href="props.project.github" target="_blank"><img src="/img/github-mark.svg">Github</a>
+      <a :href="props.project.github" target="_blank"><img src="/img/icons/github-mark.svg">Github</a>
     </div>
   </div>
 </template>
@@ -62,6 +66,14 @@ const props = defineProps({
       font-size: 1.5rem;
       font-weight: 500;
       color: $color-font;
+
+      img {
+        position: relative;
+        top: 3px;
+        width: 20px;
+        height: 20px;
+        filter: brightness(0) invert(0.9);
+      }
     }
     p {
       margin-top: 5px;

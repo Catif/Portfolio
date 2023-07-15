@@ -53,6 +53,7 @@
       {
         "name": "Projet Tutoré - Scudo",
         "description": "Vous pouvez stream comme Twitch ou Youtube, mais ce projet se concentre plus sur la protection de vos vidéos.<br> Vous pouvez enregistrer vos vidéos dans le cloud et les regarder plus tard, c'est une sécurité pour ne pas perdre votre video si vous être dans une mauvaise situation.",
+        "team": true,
         "technologies": [
           "Slim",
           "MySQL",
@@ -67,12 +68,14 @@
       {
         "name": "Streaming avec une caméra en ligne",
         "description": "Ceci est un projet qui vous autorise à stream votre webcam avec un replay enregistré sur le serveur.<br> C'est une petite partie d'<a href=\"https://github.com/Catif/LP-PTUT_Scudo\" target=\"_blank\">un plus grand projet</a> dont je suis en train de travaillé à l'école",
+        "team": false,
         "technologies": ["NodeJS", "RTCMulticonnection", "Socket.io", "WebRTC", "Docker"],
         "picture": "https://i.imgur.com/jBLx12H.gif",
         "github": "https://github.com/Catif/Record-Live-WebRTC"
       },
       {
         "name": "Atelier 1 - Photomedia",
+        "team": true,
         "description": "Vous connaissez <a href=\"https://www.pinterest.fr/\">Pinterest</a> ? C'est un petit clone de celui-ci. Vous pouvez publier vos propre images et voir celle des autres utilisateurs.<br> Vous pouvez aussi créer des galeries ou en rejoindre et en devenir un contributeur.",
         "technologies": ["PHP", "JavaScript", "SASS", "MySQL"],
         "picture": "https://i.imgur.com/htfTxvO.jpeg",
