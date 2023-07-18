@@ -14,7 +14,7 @@ provide('confetti', confetti)
 </script>
 
 <template>
-  <header>
+  <header id="nav">
     <Navbar />
   </header>
 
