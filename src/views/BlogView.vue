@@ -1,5 +1,5 @@
 <script setup>
-import Blog from '@/components/Blog.vue'
+import Blog from '@/components/Blog/Blog.vue'
 </script>
 
 <template>

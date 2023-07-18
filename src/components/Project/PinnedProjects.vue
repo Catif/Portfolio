@@ -1,5 +1,5 @@
 <script setup>
-import PinnedProject from '@/components/assets/PinnedProject.vue'
+import PinnedProject from '@/components/Project/PinnedProject.vue'
 </script>
 
 <template>

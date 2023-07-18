@@ -24,6 +24,10 @@ body{
     flex-direction: column;
 }
 
+header {
+    padding-bottom: 65px;
+}
+
 a {
     color: $color-link;
     text-decoration: none;

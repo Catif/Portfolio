@@ -1,14 +1,14 @@
 <script setup>
+import BlogLastPost from '../components/Blog/BlogLastPost.vue'
 import Presentation from '@/components/Presentation.vue'
-import PinnedProjects from '@/components/PinnedProjects.vue'
-import Blog from '@/components/Blog.vue'
+import PinnedProjects from '@/components/Project/PinnedProjects.vue'
 </script>
 
 <template>
   <div>
     <Presentation />
     <PinnedProjects />
-    <Blog />
+    <BlogLastPost />
   </div>
 </template>
 

@@ -1,4 +1,8 @@
 {
+  "divers": {
+    "loading": "Chargement..."
+  },
+
   "navbar": {
     "home": "accueil",
     "portfolio": "portfolio",
@@ -85,6 +89,10 @@
   },
 
   "blog": {
-    "title": "Blog"
+    "title": "Blog",
+    "post-not-found": "Post non trouvé, vous allez être redirigé vers la liste des posts dans 2 secondes...",
+    "created-at": "Créé le",
+    "updated-at": "Mis à jour le",
+    "minutes-read": "minutes de lecture"
   }
 }

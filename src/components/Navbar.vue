@@ -51,10 +51,12 @@ function changeRoute(name) {
 nav {
   background: $color-background-nav;
   display: flex;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
+  z-index: 100;
 
   color: $color-link-nav;
 

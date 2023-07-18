@@ -1,4 +1,8 @@
 {
+  "divers": {
+    "loading": "Loading..."
+  },
+
   "navbar": {
     "home": "home",
     "portfolio": "portfolio",
@@ -78,6 +82,10 @@
   },
 
   "blog": {
-    "title": "Blog"
+    "title": "Blog",
+    "post-not-found": "Post not found, you will be redirected to the list of posts in 2 seconds...",
+    "created-at": "Created at",
+    "updated-at": "Updated at",
+    "minutes-read": "minutes to read"
   }
 }
