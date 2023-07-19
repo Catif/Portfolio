@@ -16,7 +16,7 @@ const lang = computed(() => route.params.lang ? route.params.lang : 'fr')
 
 
 function getBlogs() {
-  axios.get('https://api.catif.dev/items/blog_translations?sort=-blog_id&limit=3')
+  axios.get('https://api.catif.dev/items/blog_translations?sort=-blog_id&limit=6')
     .then(response => response.data)
     .then((data) => {
       data = data.data
