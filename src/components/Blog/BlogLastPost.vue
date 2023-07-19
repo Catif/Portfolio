@@ -1,14 +1,11 @@
 <script setup>
-import { computed, inject, onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { inject, onMounted, ref } from 'vue'
 
 import BlogCard from './BlogCard.vue'
 
 
-const route = useRoute()
 const api = inject('api')
 const blogs = ref([])
-const lang = computed(() => route.params.lang ? route.params.lang : 'fr')
 
 
 
