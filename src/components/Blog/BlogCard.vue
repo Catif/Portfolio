@@ -8,26 +8,58 @@ const props = defineProps({
 
 const route = useRoute()
 
+const blogComputed = computed(() => {
+  const blogTemp = props.blog
+
+  const blogFr = blogTemp.translations.find(translation => translation.languages_id === 'fr-FR')
+  const blogEn = blogTemp.translations.find(translation => translation.languages_id === 'en-US')
+
+  blogTemp.fr = {
+    title: blogFr.title,
+    description: blogFr.description,
+    tags: blogFr.tags,
+  }
+  blogTemp.onlyFr = true
+
+  if (blogEn && blogEn.title && blogEn.description && blogEn.tags) {
+    blogTemp.en = {
+      title: blogEn.title,
+      description: blogEn.description,
+      tags: blogEn.tags,
+    }
+    blogTemp.onlyFr = false
+  }
+  else {
+    blogTemp.en = {
+      title: blogFr.title,
+      description: blogFr.description,
+      tags: blogFr.tags,
+    }
+  }
+
+  return blogTemp
+})
+
 const lang = computed(() => route.params.lang ? route.params.lang : 'fr')
-const dateBlog = computed(() => new Date(props.blog.created_at).toLocaleDateString(lang.value))
+const dateBlog = computed(() => new Date(props.blog.published_at).toLocaleDateString(lang.value))
 </script>
 
 
 
 <template>
-  <router-link :to="{ name: 'blog-element', params: { lang, id_blog: props.blog.blog_id } }" class="blogCard">
+  <router-link :to="{ name: 'blog-element', params: { lang, id_blog: blogComputed.id } }" class="blogCard">
     <h3 class="blogCard__title">
-      {{ props.blog.title }}
-      <span v-if="props.blog.onlyFr" class="blogCard__title__onlyFr">
+      {{ blogComputed[lang].title }}
+      <span v-if="blogComputed.onlyFr" class="blogCard__title__onlyFr">
         No translation
       </span>
     </h3>
     <p class="blogCard__description">
-      {{ props.blog.description }}
+      {{ blogComputed[lang].description }}
     </p>
     <div class="blogCard__footer">
       <div class="blogCard__footer__tags">
-        <template v-for="tag in props.blog.tags" :key="tag">
+        <template v-for="tag in blogComputed[lang].tags" :key="tag">
           <span class="tag">
             {{ tag }}
           </span>

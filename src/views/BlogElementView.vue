@@ -1,14 +1,23 @@
 <script setup>
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, inject, onMounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import axios from 'axios'
 import Markdown from '../components/assets/Markdown.vue'
 
 const route = useRoute()
 const router = useRouter()
+const api = inject('api')
 const post = reactive({
-  fr: {},
-  en: {},
+  id: null,
+  published_at: null,
+  updated_at: null,
+  fr: {
+    title: null,
+    content: null,
+  },
+  en: {
+    title: null,
+    content: null,
+  },
 })
 const lang = computed(() => route.params.lang ? route.params.lang : 'fr')
 const state = ref('loading')
@@ -34,45 +43,49 @@ const timeToRead = computed(() => {
   const readTime = Math.ceil(minutes)
   return readTime
 })
-const created_at = computed(() => {
-  const date = new Date(post[lang.value].created_at)
+const published_at = computed(() => {
+  const date = new Date(post.published_at)
   return date.toLocaleDateString(lang.value, { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })
 })
 const updated_at = computed(() => {
-  const date = new Date(post[lang.value].updated_at)
+  const date = new Date(post.updated_at)
   return date.toLocaleDateString(lang.value, { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })
 })
 
 function getPost(id) {
-  axios.get(`https://api.catif.dev/items/blog_translations?filter[blog_id]=${id}`)
+  api.get(`/items/blog/${id}?fields=*,translations.*`)
     .then(response => response.data)
     .then((data) => {
       data = data.data
 
-      // Not found
-      if (data.length === 0) {
-        state.value = 'not-found'
+      post.id = data.id
+      post.published_at = data.published_at
+      post.updated_at = data.updated_at
 
-        setTimeout(() => {
-          if (route.name === 'blog-element' && route.params.id_blog === id)
-            router.push({ name: 'blog', params: { lang: lang.value } })
-        }, 2000)
+      const postFr = data.translations.find(translation => translation.languages_id === 'fr-FR')
+      const postEn = data.translations.find(translation => translation.languages_id === 'en-US')
 
-        return
+      post.fr.title = postFr.title
+      post.fr.content = postFr.content
+
+      if (postEn && postEn.title && postEn.content) {
+        post.en.title = postEn.title
+        post.en.content = postEn.content
+      }
+      else {
+        post.en.title = postFr.title
+        post.en.content = postFr.content
       }
 
       state.value = 'loaded'
+    })
+    .catch(() => {
+      state.value = 'not-found'
 
-      // Found
-      post.fr = data.filter(blog => blog.languages_id === 'fr-FR')[0]
-      post.en = data.filter(blog => blog.languages_id === 'en-US')[0]
-
-      // Set french version if no translation in english
-      if (!post.en.title && !post.en.description && !post.en.content && !post.en.tags) {
-        post.en = {
-          ...post.fr,
-        }
-      }
+      setTimeout(() => {
+        if (route.name === 'blog-element' && route.params.id_blog === id)
+          router.push({ name: 'blog', params: { lang: lang.value } })
+      }, 2000)
     })
 }
 
@@ -122,9 +135,9 @@ onMounted(() => {
           </h1>
           <div class="Post__header__dates">
             <span class="created">
-              {{ $t('blog.created-at') }} {{ created_at }}
+              {{ $t('blog.created-at') }} {{ published_at }}
             </span>
-            <span v-if="updated_at !== created_at" class="updated">
+            <span v-if="updated_at !== published_at" class="updated">
               {{ $t('blog.updated-at') }} {{ updated_at }}
             </span>
           </div>

@@ -1,35 +1,26 @@
 <script setup>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, inject, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import axios from 'axios'
 
 import BlogCard from './BlogCard.vue'
 
 
 const route = useRoute()
-const blogs = reactive({
-  fr: [],
-  en: [],
-})
+const api = inject('api')
+const blogs = ref([])
 const lang = computed(() => route.params.lang ? route.params.lang : 'fr')
 
 
 
 function getBlogs() {
-  axios.get('https://api.catif.dev/items/blog_translations?sort=-blog_id&limit=6')
+  api.get('/items/blog?fields=*,translations.*&sort=-id&limit=3')
     .then(response => response.data)
     .then((data) => {
       data = data.data
-      blogs.fr = data.filter(blog => blog.languages_id === 'fr-FR')
-      blogs.en = data.filter(blog => blog.languages_id === 'en-US')
 
-      // Set french version if no translation in english
-      blogs.en.forEach((blog) => {
-        if (!blog.title) {
-          blog = blogs.fr.find(frBlog => frBlog.blog_id === blog.blog_id)
-          blog.onlyFr = true
-        }
-      })
+      console.log(data)
+
+      blogs.value = data
     })
 }
 
@@ -42,7 +33,7 @@ onMounted(() => {
   <section id="Blog">
     <h2>{{ $t("blog.title") }}</h2>
     <div class="list-blog">
-      <template v-for="blog in blogs[lang]" :key="blog.blog_id">
+      <template v-for="blog in blogs" :key="blog.blog_id">
         <BlogCard :blog="blog" />
       </template>
     </div>
