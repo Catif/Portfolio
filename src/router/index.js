@@ -20,6 +20,11 @@ const router = createRouter({
           component: () => import('@/views/PortfolioView.vue'),
         },
         {
+          path: 'portfolio/:id_project',
+          name: 'portfolio-element',
+          component: () => import('@/views/PortfolioElementView.vue'),
+        },
+        {
           path: 'blog',
           name: 'blog',
           component: () => import('@/views/BlogView.vue'),
