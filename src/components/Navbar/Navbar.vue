@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import LanguageNav from './assets/LanguageNav.vue'
+
+import LanguageNav from '@/components/Navbar/LanguageNav.vue'
 
 const actualRouteCodeTrad = ref('')
 const route = useRoute()

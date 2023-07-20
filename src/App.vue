@@ -5,7 +5,7 @@ import mitt from 'mitt'
 import JSConfetti from 'js-confetti'
 import axios from 'axios'
 import Footer from '@/components/Footer.vue'
-import Navbar from '@/components/Navbar.vue'
+import Navbar from '@/components/Navbar/Navbar.vue'
 
 const bus = mitt()
 const confetti = new JSConfetti()
