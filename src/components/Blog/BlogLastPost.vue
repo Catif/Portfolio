@@ -15,8 +15,6 @@ function getBlogs() {
     .then((data) => {
       data = data.data
 
-      console.log(data)
-
       blogs.value = data
     })
 }
