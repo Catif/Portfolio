@@ -103,6 +103,7 @@ function runConffeti() {
         font-size: 1.3rem;
         font-weight: 300;
         color: $color-font;
+        text-align: justify;
       }
 
       #download-CV {
