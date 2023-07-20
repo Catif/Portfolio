@@ -207,8 +207,7 @@ onMounted(() => {
     text-align: center;
   }
   img {
-    width: 100%;
-    max-width: fit-content;
+    width: 90%;
     height: auto;
     border-radius: 5px;
   }
