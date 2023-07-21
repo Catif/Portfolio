@@ -56,7 +56,13 @@
   },
 
   "project": {
-    "see-more": "Voir plus"
+    "title": "Projets",
+    "see-more": "Voir plus",
+    "finder": {
+      "categories": {
+        "years": "Années"
+      }
+    }
   },
 
   "blog": {
