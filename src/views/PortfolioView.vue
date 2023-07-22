@@ -25,7 +25,7 @@ const projectsShow = computed(() => {
 })
 
 function getBlogs() {
-  api.get('/items/project?fields=*,translations.*&sort=-id')
+  api.get('/items/project?fields=*,translations.*&sort=-done_at')
     .then(response => response.data)
     .then((data) => {
       data = data.data
@@ -33,7 +33,7 @@ function getBlogs() {
       const category = categories.value.find(categoryTemp => categoryTemp.title === 'project.finder.categories.years')
 
       data.forEach((project) => {
-        const year = String(new Date(project.published_at).getFullYear())
+        const year = String(new Date(project.done_at).getFullYear())
         const element = category.elements.find(elementTemp => elementTemp.name === year)
         if (element) {
           element.projects.push(project)

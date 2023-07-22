@@ -58,7 +58,10 @@
   "project": {
     "title": "Projects",
     "see-more": "See more",
+    "solo-project": "Solo project",
+    "team-project": "Team project",
     "project-not-found": "Project not found, you will be redirected to the list of projects in 2 seconds...",
+    "done-in": "Done in",
     "finder": {
       "categories": {
         "years": "Years"
