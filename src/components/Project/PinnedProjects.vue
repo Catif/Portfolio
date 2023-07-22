@@ -7,7 +7,7 @@ const projects = ref([])
 
 
 function getProjects() {
-  api.get('/items/project?fields=*,translations.*&sort=-done_at')
+  api.get('/items/project?filter[is_pinned][_eq]=true&fields=*,translations.*&sort=-done_at')
     .then(response => response.data)
     .then((data) => {
       data = data.data
