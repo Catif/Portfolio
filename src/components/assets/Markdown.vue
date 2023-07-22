@@ -146,6 +146,8 @@ onMounted(() => {
 
 
 <style lang="scss">
+@import 'src/assets/highlightjs/github-dark-dimmed.css';
+
 .Markdown {
   h1 {
     font-size: 2rem;
