@@ -44,7 +44,6 @@ function getProject(id) {
       project.main_picture = data.main_picture
       project.is_solo_project = data.is_solo_project
       project.done_at = data.done_at
-      console.log(data)
 
       const projectFr = data.translations.find(translation => translation.languages_code === 'fr-FR')
       const projectEn = data.translations.find(translation => translation.languages_code === 'en-US')
@@ -75,7 +74,6 @@ function getProject(id) {
     .catch(() => {
       state.value = 'not-found'
 
-      console.log(route)
       setTimeout(() => {
         if (route.name === 'portfolio-element' && route.params.id_project === id)
           router.push({ name: 'portfolio', params: { lang: lang.value } })
