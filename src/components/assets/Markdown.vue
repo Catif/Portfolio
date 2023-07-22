@@ -156,7 +156,7 @@ onMounted(() => {
   h2 {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-top: 12rem;
+    margin-top: 6rem;
     margin-bottom: 1rem;
   }
 
