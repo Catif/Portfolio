@@ -11,7 +11,6 @@ function getProjects() {
     .then(response => response.data)
     .then((data) => {
       data = data.data
-      console.log(data)
 
       projects.value = data
     })

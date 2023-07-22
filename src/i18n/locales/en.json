@@ -58,6 +58,7 @@
   "project": {
     "title": "Projects",
     "see-more": "See more",
+    "project-not-found": "Project not found, you will be redirected to the list of projects in 2 seconds...",
     "finder": {
       "categories": {
         "years": "Years"
