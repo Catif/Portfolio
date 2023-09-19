@@ -210,6 +210,7 @@ onMounted(() => {
   }
   img {
     width: 90%;
+    max-width: fit-content;
     height: auto;
     border-radius: 5px;
   }
