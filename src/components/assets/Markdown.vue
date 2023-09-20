@@ -127,10 +127,14 @@ onMounted(() => {
     }),
   )
 
+  const renderer = new marked.value.Renderer()
+  renderer.link = (href, title, text) => `<a target="_blank" href="${href}" title="${title}">${text}</a>`
+
   // Marked settings
   marked.value.setOptions({
     mangle: false,
     headerIds: false,
+    renderer,
   })
 
   generateMarkdown(props.markdown)
