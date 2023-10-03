@@ -1,0 +1,11 @@
+User-agent: *
+
+Disallow: /*/portfolio/*
+Allow: /fr/portfolio
+Allow: /en/portfolio
+
+Disallow: /*/blog/3
+Allow: /fr/blog
+Allow: /en/blog
+
+Allow: /

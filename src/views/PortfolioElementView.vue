@@ -1,5 +1,5 @@
 <script setup>
-import { computed, inject, onMounted, reactive, ref } from 'vue'
+import { computed, inject, onMounted, reactive, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Markdown from '../components/assets/Markdown.vue'
 
@@ -14,11 +14,13 @@ const project = reactive({
 
   fr: {
     title: null,
+    description: null,
     content: null,
     tags: [],
   },
   en: {
     title: null,
+    description: null,
     content: null,
     tags: [],
   },
@@ -35,7 +37,7 @@ const done_in = computed(() => {
 })
 
 function getProject(id) {
-  api.get(`/items/project/${id}?fields=*,translations.*`)
+  return api.get(`/items/project/${id}?fields=*,translations.*`)
     .then(response => response.data)
     .then((data) => {
       data = data.data
@@ -50,6 +52,7 @@ function getProject(id) {
 
       project.fr = {
         title: projectFr.title,
+        description: projectFr.description,
         content: projectFr.content,
         tags: projectFr.tags,
       }
@@ -57,6 +60,7 @@ function getProject(id) {
       if (projectEn && projectEn.title && projectEn.content && projectEn.tags) {
         project.en = {
           title: projectEn.title,
+          description: projectEn.description,
           content: projectEn.content,
           tags: projectEn.tags,
         }
@@ -64,6 +68,7 @@ function getProject(id) {
       else {
         project.en = {
           title: projectFr.title,
+          description: projectFr.description,
           content: projectFr.content,
           tags: projectFr.tags,
         }
@@ -81,13 +86,37 @@ function getProject(id) {
     })
 }
 
+watch(lang, () => {
+  if (project.id) {
+    document.title = `Catif - ${project[lang.value].title}`
+    // remove <br> in description
+    const description = project[lang.value].description.replace(/<br>/g, ' ')
+    document.querySelector('meta[name="description"]').setAttribute('content', description)
+
+    // set keywords
+    const actualKeywords = document.querySelector('meta[name="keywords"]').getAttribute('content')
+    const keywords = project[lang.value].tags.join(', ')
+    document.querySelector('meta[name="keywords"]').setAttribute('content', `${actualKeywords}, ${keywords}`)
+  }
+})
+
 onMounted(() => {
   const id = route.params.id_project
 
   if (!id)
     router.push({ name: 'portfolio', params: { lang: lang.value } })
 
-  getProject(id)
+  getProject(id).then(() => {
+    document.title = `Catif - ${project[lang.value].title}`
+    // remove <br> in description
+    const description = project[lang.value].description.replace(/<br>/g, ' ')
+    document.querySelector('meta[name="description"]').setAttribute('content', description)
+
+    // set keywords
+    const actualKeywords = document.querySelector('meta[name="keywords"]').getAttribute('content')
+    const keywords = project[lang.value].tags.join(', ')
+    document.querySelector('meta[name="keywords"]').setAttribute('content', `${actualKeywords}, ${keywords}`)
+  })
 })
 </script>
 

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, inject, onMounted, reactive, ref } from 'vue'
+import { computed, inject, onMounted, reactive, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Markdown from '../components/assets/Markdown.vue'
 
@@ -12,11 +12,15 @@ const post = reactive({
   updated_at: null,
   fr: {
     title: null,
+    description: null,
     content: null,
+    tags: null,
   },
   en: {
     title: null,
+    description: null,
     content: null,
+    tags: null,
   },
 })
 const lang = computed(() => route.params.lang ? route.params.lang : 'fr')
@@ -53,7 +57,7 @@ const updated_at = computed(() => {
 })
 
 function getPost(id) {
-  api.get(`/items/blog/${id}?fields=*,translations.*`)
+  return api.get(`/items/blog/${id}?fields=*,translations.*`)
     .then(response => response.data)
     .then((data) => {
       data = data.data
@@ -66,15 +70,21 @@ function getPost(id) {
       const postEn = data.translations.find(translation => translation.languages_id === 'en-US')
 
       post.fr.title = postFr.title
+      post.fr.description = postFr.description
       post.fr.content = postFr.content
+      post.fr.tags = postFr.tags
 
       if (postEn && postEn.title && postEn.content) {
         post.en.title = postEn.title
+        post.en.description = postEn.description
         post.en.content = postEn.content
+        post.en.tags = postEn.tags
       }
       else {
         post.en.title = postFr.title
+        post.en.description = postFr.description
         post.en.content = postFr.content
+        post.en.tags = postFr.tags
       }
 
       state.value = 'loaded'
@@ -89,13 +99,37 @@ function getPost(id) {
     })
 }
 
+watch(lang, () => {
+  if (post.id) {
+    document.title = `Catif - ${post[lang.value].title}`
+    // remove <br> in description
+    const description = post[lang.value].description.replace(/<br>/g, ' ')
+    document.querySelector('meta[name="description"]').setAttribute('content', description)
+
+    // set keywords
+    const actualKeywords = document.querySelector('meta[name="keywords"]').getAttribute('content')
+    const keywords = post[lang.value].tags.join(', ')
+    document.querySelector('meta[name="keywords"]').setAttribute('content', `${actualKeywords}, ${keywords}`)
+  }
+})
+
 onMounted(() => {
   const id = route.params.id_blog
 
   if (!id)
     router.push({ name: 'blog', params: { lang: lang.value } })
 
-  getPost(id)
+  getPost(id).then(() => {
+    document.title = `Catif - ${post[lang.value].title}`
+    // remove <br> in description
+    const description = post[lang.value].description.replace(/<br>/g, ' ')
+    document.querySelector('meta[name="description"]').setAttribute('content', description)
+
+    // set keywords
+    const actualKeywords = document.querySelector('meta[name="keywords"]').getAttribute('content')
+    const keywords = post[lang.value].tags.join(', ')
+    document.querySelector('meta[name="keywords"]').setAttribute('content', `${actualKeywords}, ${keywords}`)
+  })
 })
 </script>
 
