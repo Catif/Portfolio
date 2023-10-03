@@ -15,7 +15,7 @@ export default defineConfig({
       // locale messages resource pre-compile option
       include: resolve(dirname(fileURLToPath(import.meta.url)), './path/to/src/locales/**'),
     }),
-    Visualizer({ filename: './visualiser-bundler/stats.html' }),
+    Visualizer({ filename: './visualiser_bundler/stats.html' }),
   ],
   resolve: {
     alias: {

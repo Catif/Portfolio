@@ -2,7 +2,8 @@
 import { onMounted, ref, watch } from 'vue'
 import { Marked } from 'marked'
 import { markedHighlight } from 'marked-highlight'
-import hljs from 'highlight.js'
+
+import hljs from 'highlight.js/lib/core'
 
 const props = defineProps({
   markdown: {
@@ -12,6 +13,22 @@ const props = defineProps({
 })
 const outputMarkdown = ref(null)
 const marked = ref(null)
+const languages = {
+  javascript: () => import('highlight.js/lib/languages/javascript'),
+  html: () => import('highlight.js/lib/languages/xml'),
+  css: () => import('highlight.js/lib/languages/css'),
+  scss: () => import('highlight.js/lib/languages/scss'),
+  json: () => import('highlight.js/lib/languages/json'),
+  bash: () => import('highlight.js/lib/languages/bash'),
+  sql: () => import('highlight.js/lib/languages/sql'),
+  php: () => import('highlight.js/lib/languages/php'),
+  python: () => import('highlight.js/lib/languages/python'),
+  java: () => import('highlight.js/lib/languages/java'),
+  typescript: () => import('highlight.js/lib/languages/typescript'),
+  markdown: () => import('highlight.js/lib/languages/markdown'),
+  yaml: () => import('highlight.js/lib/languages/yaml'),
+  dockerfile: () => import('highlight.js/lib/languages/dockerfile'),
+}
 
 watch(() => props.markdown, (markdown) => {
   if (marked.value === null)
@@ -115,8 +132,17 @@ function generateLines(code) {
   return contentEl
 }
 
+async function registerLanguages() {
+  for (const [name, importFn] of Object.entries(languages)) {
+    const langModule = await importFn()
+    hljs.registerLanguage(name, langModule.default)
+  }
+}
 
-onMounted(() => {
+
+onMounted(async () => {
+  await registerLanguages()
+
   marked.value = new Marked(
     markedHighlight({
       prefix: 'hljs language-',
