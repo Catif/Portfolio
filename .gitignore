@@ -13,7 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
-
+visualiser_bundler
 /cypress/videos/
 /cypress/screenshots/
 

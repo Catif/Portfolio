@@ -1,8 +1,10 @@
 import { dirname, resolve } from 'node:path'
 import { URL, fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
+
 import vue from '@vitejs/plugin-vue'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
+import Visualizer from 'rollup-plugin-visualizer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,6 +15,7 @@ export default defineConfig({
       // locale messages resource pre-compile option
       include: resolve(dirname(fileURLToPath(import.meta.url)), './path/to/src/locales/**'),
     }),
+    Visualizer({ filename: './visualiser-bundler/stats.html' }),
   ],
   resolve: {
     alias: {
