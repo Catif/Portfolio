@@ -80,7 +80,7 @@ function openElement(element) {
 
 
 <style lang="scss">
-@import 'src/assets/fonts/San_Francisco/sanfrancisco.css';
+@import '@/assets/fonts/San_Francisco/sanfrancisco.css';
 
 // color mac folder
 $background-categories: hsl(219, 24%, 18%);
