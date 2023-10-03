@@ -150,7 +150,7 @@ onMounted(() => {
 
 
 <style lang="scss">
-@import 'src/assets/highlightjs/github-dark-dimmed.css';
+@import '@/assets/highlightjs/github-dark-dimmed.css';
 
 .Markdown {
   h1 {
