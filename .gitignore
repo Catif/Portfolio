@@ -26,3 +26,6 @@ visualiser_bundler
 *.njsproj
 *.sln
 *.sw?
+
+# env
+.env

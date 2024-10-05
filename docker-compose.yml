@@ -1,0 +1,26 @@
+services:
+  vue:
+    build: .
+    ports:
+      - "8080:8080"
+
+
+# API
+  directus:
+    image: directus/directus:latest
+    ports:
+      - 8055:8055
+    volumes:
+      - ./api/database:/directus/database
+      - ./api/uploads:/directus/uploads
+    environment:
+      KEY: ${DIRECTUS_KEY}
+      SECRET: ${DIRECTUS_SECRET}
+      ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD}
+      DB_CLIENT: 'sqlite3'
+      DB_FILENAME: '/directus/database/data.db'
+      WEBSOCKETS_ENABLED: true
+      PUBLIC_URL: ${DIRECTUS_PUBLIC_URL}
+      CORS_ENABLED: TRUE
+      CORS_ORIGIN: 'https://catif.dev,http://localhost,http://localhost:5173'
