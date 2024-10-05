@@ -1,7 +1,4 @@
-FROM node:18-alpine
-
-# Installe Python et pip en plus du serveur http
-RUN npm install -g http-server
+FROM node:18-alpine as build-stage
 
 # définit le dossier 'app' comme dossier de travail
 WORKDIR /app
@@ -18,5 +15,7 @@ COPY . .
 # construit l'app pour la production en la minifiant
 RUN npm run build
 
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
