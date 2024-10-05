@@ -1,21 +1,28 @@
 FROM node:18-alpine as build-stage
 
-# définit le dossier 'app' comme dossier de travail
+# Définit le dossier 'app' comme dossier de travail
 WORKDIR /app
 
-# copie 'package.json' et 'package-lock.json' (si disponible)
+# Copie 'package.json' et 'package-lock.json'
 COPY package*.json ./
 
-# installe les dépendances du projet
-RUN npm install
+# Installe les dépendances du projet
+RUN npm install --production && npm cache clean --force
 
-# copie les fichiers et dossiers du projet dans le dossier de travail (par exemple : le dossier 'app')
+# Copie les fichiers du projet dans le dossier de travail
 COPY . .
 
-# construit l'app pour la production en la minifiant
+# Construit l'app pour la production
 RUN npm run build
 
 FROM nginx:stable-alpine as production-stage
+
+# Copie les fichiers du build dans le dossier Nginx
 COPY --from=build-stage /app/dist /usr/share/nginx/html
+
+# Ajout d'une configuration nginx personnalisée
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
