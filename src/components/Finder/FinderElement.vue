@@ -64,10 +64,7 @@ function generateUrlPictures(element) {
   const regex = /https:\/\/api.catif.dev\/assets\/[a-zA-Z0-9-]*/g
   const matches = element.content.match(regex) || []
 
-  return [
-    "https://api.catif.dev/assets/" + element.main_picture,
-    ...matches,
-  ].splice(0, 3)
+  return ["https://api.catif.dev/assets/" + element.main_picture, ...matches]
 }
 </script>
 
