@@ -44,12 +44,13 @@ function getBlogs() {
         const element = category.elements.find(
           (elementTemp) => elementTemp.name === year
         )
+
         if (element) {
           element.projects.push(project)
         } else {
           category.elements.push({
             name: year,
-            icon: "/img/folder_mac_outline.png",
+            icon: "/img/folder/folder_mac_outline.png",
             projects: [project],
           })
         }
