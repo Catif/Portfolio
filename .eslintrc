@@ -1,7 +1,7 @@
 {
   "rules": {
     "no-multiple-empty-lines": ["error", { "max": 3, "maxEOF": 1 }],
-    "no-console": "error",
+    "no-console": "off",
     "semi": ["error", "never"],
     "comma-dangle": ["error", {
       "arrays": "always-multiline",
