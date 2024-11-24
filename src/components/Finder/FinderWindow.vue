@@ -127,6 +127,7 @@ $background-folder: #232527;
     padding: 1rem 0.5rem;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 
     &__header {
       padding-bottom: 0.5rem;
