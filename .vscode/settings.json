@@ -1,12 +1,16 @@
 {
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "i18n-ally.localesPaths": [
+  // i18n
+    "i18n-ally.localesPaths": [
     "src/i18n",
     "public/img/locales",
     "src/i18n/locales"
-  ]
+  ],
+
+  // Prettier
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnType": false, // required
+  "editor.formatOnPaste": true, // optional
+  "editor.formatOnSave": true, // optional
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
 }
