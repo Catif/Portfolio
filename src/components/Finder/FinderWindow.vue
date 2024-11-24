@@ -167,13 +167,19 @@ $background-folder: #232527;
       justify-content: center;
 
       img {
-        height: 200px;
+        height: 400px;
         width: inherit;
         object-fit: cover;
         border-radius: 5px;
         transition: transform 0.3s;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .panel {
+    display: none;
   }
 }
 </style>
