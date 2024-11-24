@@ -1,0 +1,16 @@
+/* Importation des fichiers SCSS globaux */
+@use "@/assets/scss/reset.scss";
+
+/* Animation de transition de page */
+@use "@/assets/scss/animation/fade.scss";
+
+/* Markdown theme code */
+@use "@/assets/highlightjs/github-dark-dimmed.css";
+
+/* Fonts */
+@use "@/assets/fonts/Font_San_Francisco.css";
+@use "@/assets/fonts/Font_Source_Code_Pro.scss";
+@use "@/assets/fonts/Font_Source_Sans_Pro.scss";
+
+/* Css perso */
+@use "@/assets/scss/basic.scss";

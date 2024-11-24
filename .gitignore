@@ -13,16 +13,19 @@ dist
 dist-ssr
 coverage
 *.local
-
+visualiser_bundler
 /cypress/videos/
 /cypress/screenshots/
 
 # Editor directories and files
 .vscode/*
-!.vscode/extensions.json
+!.vscode/settings.json
 .idea
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# env
+.env
