@@ -1,6 +1,6 @@
 <script setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed } from "vue"
+import { useRoute } from "vue-router"
 
 const props = defineProps({
   blog: Object,
@@ -11,8 +11,12 @@ const route = useRoute()
 const blogComputed = computed(() => {
   const blogTemp = props.blog
 
-  const blogFr = blogTemp.translations.find(translation => translation.languages_id === 'fr-FR')
-  const blogEn = blogTemp.translations.find(translation => translation.languages_id === 'en-US')
+  const blogFr = blogTemp.translations.find(
+    (translation) => translation.languages_id === "fr-FR"
+  )
+  const blogEn = blogTemp.translations.find(
+    (translation) => translation.languages_id === "en-US"
+  )
 
   blogTemp.fr = {
     title: blogFr.title,
@@ -28,8 +32,7 @@ const blogComputed = computed(() => {
       tags: blogEn.tags,
     }
     blogTemp.onlyFr = false
-  }
-  else {
+  } else {
     blogTemp.en = {
       title: blogFr.title,
       description: blogFr.description,
@@ -40,14 +43,17 @@ const blogComputed = computed(() => {
   return blogTemp
 })
 
-const lang = computed(() => route.params.lang ? route.params.lang : 'fr')
-const dateBlog = computed(() => new Date(props.blog.published_at).toLocaleDateString(lang.value))
+const lang = computed(() => (route.params.lang ? route.params.lang : "fr"))
+const dateBlog = computed(() =>
+  new Date(props.blog.published_at).toLocaleDateString(lang.value)
+)
 </script>
 
-
-
 <template>
-  <router-link :to="{ name: 'blog-element', params: { lang, id_blog: blogComputed.id } }" class="blogCard">
+  <router-link
+    :to="{ name: 'blog-element', params: { lang, id_blog: blogComputed.id } }"
+    class="blogCard"
+  >
     <h3 class="blogCard__title">
       {{ blogComputed[lang].title }}
       <span v-if="blogComputed.onlyFr" class="blogCard__title__onlyFr">
@@ -71,8 +77,6 @@ const dateBlog = computed(() => new Date(props.blog.published_at).toLocaleDateSt
     </div>
   </router-link>
 </template>
-
-
 
 <style lang="scss">
 .blogCard {

@@ -1,9 +1,9 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue'
-import { Marked } from 'marked'
-import { markedHighlight } from 'marked-highlight'
+import { onMounted, ref, watch } from "vue"
+import { Marked } from "marked"
+import { markedHighlight } from "marked-highlight"
 
-import hljs from 'highlight.js/lib/core'
+import hljs from "highlight.js/lib/core"
 
 const props = defineProps({
   markdown: {
@@ -14,43 +14,44 @@ const props = defineProps({
 const outputMarkdown = ref(null)
 const marked = ref(null)
 const languages = {
-  javascript: () => import('highlight.js/lib/languages/javascript'),
-  html: () => import('highlight.js/lib/languages/xml'),
-  css: () => import('highlight.js/lib/languages/css'),
-  scss: () => import('highlight.js/lib/languages/scss'),
-  json: () => import('highlight.js/lib/languages/json'),
-  bash: () => import('highlight.js/lib/languages/bash'),
-  sql: () => import('highlight.js/lib/languages/sql'),
-  php: () => import('highlight.js/lib/languages/php'),
-  python: () => import('highlight.js/lib/languages/python'),
-  java: () => import('highlight.js/lib/languages/java'),
-  typescript: () => import('highlight.js/lib/languages/typescript'),
-  markdown: () => import('highlight.js/lib/languages/markdown'),
-  yaml: () => import('highlight.js/lib/languages/yaml'),
-  dockerfile: () => import('highlight.js/lib/languages/dockerfile'),
+  javascript: () => import("highlight.js/lib/languages/javascript"),
+  html: () => import("highlight.js/lib/languages/xml"),
+  css: () => import("highlight.js/lib/languages/css"),
+  scss: () => import("highlight.js/lib/languages/scss"),
+  json: () => import("highlight.js/lib/languages/json"),
+  bash: () => import("highlight.js/lib/languages/bash"),
+  sql: () => import("highlight.js/lib/languages/sql"),
+  php: () => import("highlight.js/lib/languages/php"),
+  python: () => import("highlight.js/lib/languages/python"),
+  java: () => import("highlight.js/lib/languages/java"),
+  typescript: () => import("highlight.js/lib/languages/typescript"),
+  markdown: () => import("highlight.js/lib/languages/markdown"),
+  yaml: () => import("highlight.js/lib/languages/yaml"),
+  dockerfile: () => import("highlight.js/lib/languages/dockerfile"),
 }
 
-watch(() => props.markdown, (markdown) => {
-  if (marked.value === null)
-    return
-  generateMarkdown(markdown)
-})
-
+watch(
+  () => props.markdown,
+  (markdown) => {
+    if (marked.value === null) return
+    generateMarkdown(markdown)
+  }
+)
 
 function generateMarkdown(markdown) {
-  outputMarkdown.value.innerHTML = ''
+  outputMarkdown.value.innerHTML = ""
 
   const contentHtml = marked.value.parse(markdown)
 
-  const divParent = document.createElement('div')
+  const divParent = document.createElement("div")
   divParent.innerHTML = contentHtml
 
-  const listCode = divParent.querySelectorAll('code')
+  const listCode = divParent.querySelectorAll("code")
 
   listCode.forEach((code) => {
     const basicCode = code.innerHTML
     const codeTextOnly = code.innerText
-    code.innerHTML = ''
+    code.innerHTML = ""
     code.appendChild(generateHeader(code, codeTextOnly))
     code.appendChild(generateLines(basicCode))
     code.appendChild(generateFooter(code))
@@ -61,8 +62,8 @@ function generateMarkdown(markdown) {
 }
 
 function generateHeader(code, codeTextOnly) {
-  const el = document.createElement('div')
-  el.classList.add('code-header')
+  const el = document.createElement("div")
+  el.classList.add("code-header")
   el.appendChild(generateLanguage(code))
   el.appendChild(generateCopyButton(codeTextOnly))
 
@@ -70,24 +71,24 @@ function generateHeader(code, codeTextOnly) {
 }
 
 function generateFooter(code) {
-  const div = document.createElement('div')
-  div.classList.add('code-footer')
+  const div = document.createElement("div")
+  div.classList.add("code-footer")
 
   return div
 }
 
 function generateLanguage(code) {
-  const el = document.createElement('div')
-  el.classList.add('language')
-  el.innerText = code.classList[0].split('-')[1]
+  const el = document.createElement("div")
+  el.classList.add("language")
+  el.innerText = code.classList[0].split("-")[1]
   return el
 }
 
 function generateCopyButton(codeTextOnly) {
-  const button = document.createElement('button')
-  button.classList.add('copy-button')
-  button.innerText = 'copy'
-  button.addEventListener('click', () => {
+  const button = document.createElement("button")
+  button.classList.add("copy-button")
+  button.innerText = "copy"
+  button.addEventListener("click", () => {
     navigator.clipboard.writeText(codeTextOnly)
   })
   return button
@@ -95,32 +96,31 @@ function generateCopyButton(codeTextOnly) {
 
 function generateLines(code) {
   // Create body of <code> balise
-  const contentEl = document.createElement('div')
-  contentEl.classList.add('code-content')
+  const contentEl = document.createElement("div")
+  contentEl.classList.add("code-content")
 
   // Split code by line
-  const listSplitCode = code.split('\n')
+  const listSplitCode = code.split("\n")
 
   // For each line
   listSplitCode.forEach((line, index) => {
     // If last line, don't add (void line)
-    if (listSplitCode.length - 1 === index)
-      return
+    if (listSplitCode.length - 1 === index) return
 
     // Create div for one line
-    const lineEl = document.createElement('div')
-    lineEl.classList.add('line')
+    const lineEl = document.createElement("div")
+    lineEl.classList.add("line")
 
     // Create number of the line
     const lineNumber = index + 1
-    const numberEl = document.createElement('span')
-    numberEl.classList.add('number')
+    const numberEl = document.createElement("span")
+    numberEl.classList.add("number")
     numberEl.innerText = lineNumber
     lineEl.appendChild(numberEl)
 
     // Create content of the line
-    const lineContentEl = document.createElement('div')
-    lineContentEl.classList.add('line-content')
+    const lineContentEl = document.createElement("div")
+    lineContentEl.classList.add("line-content")
     lineContentEl.innerHTML = line
     lineEl.appendChild(lineContentEl)
 
@@ -139,22 +139,22 @@ async function registerLanguages() {
   }
 }
 
-
 onMounted(async () => {
   await registerLanguages()
 
   marked.value = new Marked(
     markedHighlight({
-      prefix: 'hljs language-',
+      prefix: "hljs language-",
       highlight(code, lang) {
-        const language = hljs.getLanguage(lang) ? lang : 'plaintext'
+        const language = hljs.getLanguage(lang) ? lang : "plaintext"
         return hljs.highlight(code, { language }).value
       },
-    }),
+    })
   )
 
   const renderer = new marked.value.Renderer()
-  renderer.link = (href, title, text) => `<a target="_blank" href="${href}">${text}</a>`
+  renderer.link = (href, title, text) =>
+    `<a target="_blank" href="${href}">${text}</a>`
 
   // Marked settings
   marked.value.setOptions({
@@ -167,13 +167,9 @@ onMounted(async () => {
 })
 </script>
 
-
-
 <template>
   <div ref="outputMarkdown" class="Markdown" />
 </template>
-
-
 
 <style lang="scss">
 .Markdown {
@@ -261,7 +257,7 @@ onMounted(async () => {
   pre {
     background-color: v.$color-secondary-background;
     font-family: v.$font-family-mono;
-    font-size: .9em;
+    font-size: 0.9em;
     width: 100%;
     border-radius: 5px;
     white-space: pre-wrap;
@@ -278,7 +274,7 @@ onMounted(async () => {
     .code-header {
       width: 100%;
       border-bottom: 1px solid v.$color-font;
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
 
       display: flex;
       justify-content: space-between;
@@ -288,9 +284,9 @@ onMounted(async () => {
         background-color: v.$color-secondary-background;
         border: 1px solid v.$color-font;
         border-radius: 5px;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         cursor: pointer;
-        transition: all .2s ease-in-out;
+        transition: all 0.2s ease-in-out;
         color: v.$color-font;
         opacity: 0.5;
 

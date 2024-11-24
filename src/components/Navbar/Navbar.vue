@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref } from "vue"
+import { useRoute } from "vue-router"
 
-import LanguageNav from '@/components/Navbar/LanguageNav.vue'
+import LanguageNav from "@/components/Navbar/LanguageNav.vue"
 
-const actualRouteCodeTrad = ref('')
+const actualRouteCodeTrad = ref("")
 const route = useRoute()
 
 function changeRoute(name) {
@@ -18,9 +18,14 @@ function changeRoute(name) {
       <router-link to="/" @click="changeRoute('')">
         <span id="user">bradley@barbier</span>
         <span id="colon">:</span>
-        <span id="action">~/
+        <span id="action"
+          >~/
           <transition name="fade" mode="out-in">
-            <span v-if="actualRouteCodeTrad" :key="actualRouteCodeTrad" v-html="$t(actualRouteCodeTrad)" />
+            <span
+              v-if="actualRouteCodeTrad"
+              :key="actualRouteCodeTrad"
+              v-html="$t(actualRouteCodeTrad)"
+            />
           </transition>
         </span>
       </router-link>
@@ -28,20 +33,23 @@ function changeRoute(name) {
 
     <div id="menu">
       <span>cd</span>
-      <router-link :to="{ name: 'home', params: { lang: route.params.lang } }" @click="changeRoute('navbar.home')">
-        {{
-          $t("navbar.home")
-        }}
+      <router-link
+        :to="{ name: 'home', params: { lang: route.params.lang } }"
+        @click="changeRoute('navbar.home')"
+      >
+        {{ $t("navbar.home") }}
       </router-link>
-      <router-link :to="{ name: 'portfolio', params: { lang: route.params.lang } }" @click="changeRoute('navbar.portfolio')">
-        {{
-          $t("navbar.portfolio")
-        }}
+      <router-link
+        :to="{ name: 'portfolio', params: { lang: route.params.lang } }"
+        @click="changeRoute('navbar.portfolio')"
+      >
+        {{ $t("navbar.portfolio") }}
       </router-link>
-      <router-link :to="{ name: 'blog', params: { lang: route.params.lang } }" @click="changeRoute('navbar.blog')">
-        {{
-          $t("navbar.blog")
-        }}
+      <router-link
+        :to="{ name: 'blog', params: { lang: route.params.lang } }"
+        @click="changeRoute('navbar.blog')"
+      >
+        {{ $t("navbar.blog") }}
       </router-link>
       <LanguageNav />
     </div>

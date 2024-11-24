@@ -1,5 +1,5 @@
 <script setup>
-import FinderCategoryElement from './FinderCategoryElement.vue'
+import FinderCategoryElement from "./FinderCategoryElement.vue"
 
 const props = defineProps({
   category: {
@@ -17,8 +17,6 @@ const props = defineProps({
 })
 </script>
 
-
-
 <template>
   <div class="category">
     <p class="category__title">
@@ -26,13 +24,15 @@ const props = defineProps({
     </p>
     <div class="category__elements">
       <template v-for="element in category.elements" :key="element.name">
-        <FinderCategoryElement :element="element" :set-active-folder="setActiveFolder" :folder-active="folderActive" />
+        <FinderCategoryElement
+          :element="element"
+          :set-active-folder="setActiveFolder"
+          :folder-active="folderActive"
+        />
       </template>
     </div>
   </div>
 </template>
-
-
 
 <style lang="scss" scoped>
 #finder {
@@ -54,6 +54,6 @@ const props = defineProps({
       justify-content: flex-start;
       gap: 0.25rem;
     }
-}
+  }
 }
 </style>

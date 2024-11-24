@@ -15,21 +15,20 @@ const props = defineProps({
 })
 </script>
 
-
-
 <template>
-  <div class="category__element" :class="{ active: folderActive === element.name }" @click="setActiveFolder(element.name)">
-    <img :src="element.icon" alt="folder">
+  <div
+    class="category__element"
+    :class="{ active: folderActive === element.name }"
+    @click="setActiveFolder(element.name)"
+  >
+    <img :src="element.icon" alt="folder" />
     <p>{{ element.name }}</p>
   </div>
 </template>
 
-
-
 <style lang="scss" scoped>
 #finder {
   .category__element {
-
     padding: 0.25rem 0.75rem;
     width: 100%;
     border-radius: 5px;
@@ -40,7 +39,7 @@ const props = defineProps({
     gap: 0.5rem;
 
     img {
-      height: .8rem;
+      height: 0.8rem;
     }
 
     &.active {

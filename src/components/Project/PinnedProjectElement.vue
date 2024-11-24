@@ -1,8 +1,8 @@
 <script setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed } from "vue"
+import { useRoute } from "vue-router"
 
-import Markdown from '@/components/assets/Markdown.vue'
+import Markdown from "@/components/assets/Markdown.vue"
 
 const props = defineProps({
   project: {
@@ -12,14 +12,17 @@ const props = defineProps({
 })
 
 const route = useRoute()
-const lang = computed(() => route.params.lang ? route.params.lang : 'fr')
+const lang = computed(() => (route.params.lang ? route.params.lang : "fr"))
 
 const projectComputed = computed(() => {
   const projectTemp = props.project
 
-
-  const projectFr = projectTemp.translations.find(translation => translation.languages_code === 'fr-FR')
-  const projectEn = projectTemp.translations.find(translation => translation.languages_code === 'en-US')
+  const projectFr = projectTemp.translations.find(
+    (translation) => translation.languages_code === "fr-FR"
+  )
+  const projectEn = projectTemp.translations.find(
+    (translation) => translation.languages_code === "en-US"
+  )
 
   projectTemp.fr = {
     title: projectFr.title,
@@ -33,8 +36,7 @@ const projectComputed = computed(() => {
       description: projectEn.description,
       tags: projectEn.tags,
     }
-  }
-  else {
+  } else {
     projectTemp.en = {
       title: projectFr.title,
       description: projectFr.description,
@@ -49,17 +51,29 @@ const projectComputed = computed(() => {
 <template>
   <div class="pinnedProject">
     <div class="pinnedProject__image">
-      <img :src="`https://api.catif.dev/assets/${projectComputed.main_picture}`" alt="project image">
+      <img
+        :src="`https://api.catif.dev/assets/${projectComputed.main_picture}`"
+        alt="project image"
+      />
     </div>
-
 
     <div class="pinnedProject__side">
       <div class="pinnedProject__side__header">
         <h3 :title="projectComputed[lang].title">
           {{ projectComputed[lang].title }}
         </h3>
-        <img v-if="projectComputed.is_solo_project" src="/img/icons/user.svg" alt="solo icon" title="Solo project">
-        <img v-else src="/img/icons/team.svg" alt="team icon" title="Team project">
+        <img
+          v-if="projectComputed.is_solo_project"
+          src="/img/icons/user.svg"
+          alt="solo icon"
+          title="Solo project"
+        />
+        <img
+          v-else
+          src="/img/icons/team.svg"
+          alt="team icon"
+          title="Team project"
+        />
       </div>
 
       <Markdown :markdown="projectComputed[lang].description" />
@@ -71,14 +85,23 @@ const projectComputed = computed(() => {
       </div>
 
       <div class="pinnedProject__side__footer">
-        <a v-if="projectComputed.github_link" :href="projectComputed.github_link" target="_blank">
-          <img src="/img/icons/github-mark.svg">
+        <a
+          v-if="projectComputed.github_link"
+          :href="projectComputed.github_link"
+          target="_blank"
+        >
+          <img src="/img/icons/github-mark.svg" />
           Github
         </a>
 
-        <router-link :to="{ name: 'portfolio-element', params: { lang, id_project: projectComputed.id } }">
-          {{ $t('project.see-more') }}
-          <img src="/img/icons/arrow-right.svg">
+        <router-link
+          :to="{
+            name: 'portfolio-element',
+            params: { lang, id_project: projectComputed.id },
+          }"
+        >
+          {{ $t("project.see-more") }}
+          <img src="/img/icons/arrow-right.svg" />
         </router-link>
       </div>
     </div>
@@ -121,7 +144,7 @@ const projectComputed = computed(() => {
 
     &__header {
       display: flex;
-      gap: .5rem;
+      gap: 0.5rem;
       align-items: center;
 
       h3 {
@@ -161,7 +184,6 @@ const projectComputed = computed(() => {
       max-height: 66px;
       overflow-y: auto;
       width: 100%;
-
 
       span {
         font-size: 0.9rem;
@@ -212,6 +234,5 @@ const projectComputed = computed(() => {
       }
     }
   }
-
 }
 </style>

@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue"
 
-import { useRoute, useRouter } from 'vue-router'
-import WindowActions from './WindowActions.vue'
-import FinderCategory from './FinderCategory.vue'
-import FinderElement from './FinderElement.vue'
+import { useRoute, useRouter } from "vue-router"
+import WindowActions from "./WindowActions.vue"
+import FinderCategory from "./FinderCategory.vue"
+import FinderElement from "./FinderElement.vue"
 
 const props = defineProps({
   categories: {
@@ -29,28 +29,23 @@ const route = useRoute()
 const elementFocus = ref({})
 
 function focusElement(element) {
-  if (element.id) {
-    setTimeout(() => {
-      elementFocus.value = element
-    }, 0)
-  }
+  if (!element.id) return
+
   elementFocus.value = element
 }
 
 function openElement(element) {
-  if (element.id) {
-    router.push({
-      name: 'portfolio-element',
-      params: {
-        lang: route.params.lang,
-        id_project: element.id,
-      },
-    })
-  }
+  if (!element.id) return
+
+  router.push({
+    name: "portfolio-element",
+    params: {
+      lang: route.params.lang,
+      id_project: element.id,
+    },
+  })
 }
 </script>
-
-
 
 <template>
   <div id="finder">
@@ -58,7 +53,11 @@ function openElement(element) {
       <WindowActions />
       <div class="categories">
         <template v-for="category in categories" :key="category.title">
-          <FinderCategory :category="category" :set-active-folder="setActiveFolder" :folder-active="folderActive" />
+          <FinderCategory
+            :category="category"
+            :set-active-folder="setActiveFolder"
+            :folder-active="folderActive"
+          />
         </template>
       </div>
     </div>
@@ -67,17 +66,19 @@ function openElement(element) {
         <h2>{{ $t("project.title") }}</h2>
       </div>
 
-
       <div class="right-side__content" @click="focusElement({})">
         <template v-for="project in props.projects" :key="project.blog_id">
-          <FinderElement :element="project" :focus-element="focusElement" :element-focus="elementFocus" :open-element="openElement" />
+          <FinderElement
+            :element="project"
+            :focus-element="focusElement"
+            :element-focus="elementFocus"
+            :open-element="openElement"
+          />
         </template>
       </div>
     </div>
   </div>
 </template>
-
-
 
 <style lang="scss">
 // color mac folder
@@ -102,7 +103,7 @@ $background-folder: #232527;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 0.75rem .5rem;
+    padding: 0.75rem 0.5rem;
     background-color: $background-categories;
     width: 130px;
     border-right: 1px solid rgba(0, 0, 0, 0.8);
@@ -146,6 +147,5 @@ $background-folder: #232527;
       }
     }
   }
-
 }
 </style>

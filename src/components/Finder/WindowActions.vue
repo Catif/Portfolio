@@ -1,17 +1,16 @@
 <script setup>
-import { inject, ref } from 'vue'
+import { inject, ref } from "vue"
 
 const disabledActions = ref(false)
-const confetti = inject('confetti')
+const confetti = inject("confetti")
 
 function runConffeti() {
-  if (disabledActions.value)
-    return
+  if (disabledActions.value) return
   disabledActions.value = true
 
   const limitedInterval = setInterval(() => {
     confetti.addConfetti({
-      confettiColors: ['#3d7eff', '#62aaa5', '#455555'],
+      confettiColors: ["#3d7eff", "#62aaa5", "#455555"],
       confettiRadius: 5,
       confettiNumber: 700,
     })
@@ -24,8 +23,6 @@ function runConffeti() {
 }
 </script>
 
-
-
 <template>
   <div class="list-actions">
     <span class="action close" @click="runConffeti" />
@@ -33,8 +30,6 @@ function runConffeti() {
     <span class="action maximize" @click="runConffeti" />
   </div>
 </template>
-
-
 
 <style lang="scss">
 // button action top

@@ -1,17 +1,16 @@
 <script setup>
-import { inject, ref } from 'vue'
+import { inject, ref } from "vue"
 
 const disabledActions = ref(false)
-const confetti = inject('confetti')
+const confetti = inject("confetti")
 
 function runConffeti() {
-  if (disabledActions.value)
-    return
+  if (disabledActions.value) return
   disabledActions.value = true
 
   const limitedInterval = setInterval(() => {
     confetti.addConfetti({
-      confettiColors: ['#3d7eff', '#62aaa5', '#455555'],
+      confettiColors: ["#3d7eff", "#62aaa5", "#455555"],
       confettiRadius: 5,
       confettiNumber: 700,
     })
@@ -31,22 +30,41 @@ function runConffeti() {
         <h2>{{ $t("presentation.Me.name") }}</h2>
         <h3>Bradley Barbier</h3>
         <p>{{ $t("presentation.Me.presentation") }}</p>
-        <a id="download-CV" :href="$t('presentation.Me.downloadCVLink')" download>{{ $t("presentation.Me.downloadCV") }}</a>
+        <a
+          id="download-CV"
+          :href="$t('presentation.Me.downloadCVLink')"
+          download
+          >{{ $t("presentation.Me.downloadCV") }}</a
+        >
       </div>
     </div>
     <div id="IDE">
       <header>
-        <p class="title">
-          README.md
-        </p>
+        <p class="title">README.md</p>
         <div id="list-action">
-          <div id="close" :title="$t('presentation.IDE.titleConfetti')" @click="runConffeti" />
-          <div id="reduct" :title="$t('presentation.IDE.titleConfetti')" @click="runConffeti" />
-          <div id="full" :title="$t('presentation.IDE.titleConfetti')" @click="runConffeti" />
+          <div
+            id="close"
+            :title="$t('presentation.IDE.titleConfetti')"
+            @click="runConffeti"
+          />
+          <div
+            id="reduct"
+            :title="$t('presentation.IDE.titleConfetti')"
+            @click="runConffeti"
+          />
+          <div
+            id="full"
+            :title="$t('presentation.IDE.titleConfetti')"
+            @click="runConffeti"
+          />
         </div>
       </header>
       <div class="list-rows">
-        <div v-for="(row, index) in $tm('presentation.IDE.listRows')" :key="index" class="row">
+        <div
+          v-for="(row, index) in $tm('presentation.IDE.listRows')"
+          :key="index"
+          class="row"
+        >
           <div class="number">
             <p>{{ index + 1 }}</p>
           </div>
@@ -121,7 +139,10 @@ function runConffeti() {
         transition: background-color 0.2s ease-in-out;
 
         &:hover {
-          background-color: color.adjust(v.$color-secondary-background, $lightness: 5%);
+          background-color: color.adjust(
+            v.$color-secondary-background,
+            $lightness: 5%
+          );
         }
       }
     }

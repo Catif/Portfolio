@@ -1,7 +1,7 @@
 <script setup>
-import BlogLastPost from '../components/Blog/BlogLastPost.vue'
-import Presentation from '@/components/Presentation.vue'
-import PinnedProjects from '@/components/Project/PinnedProjects.vue'
+import BlogLastPost from "../components/Blog/BlogLastPost.vue"
+import Presentation from "@/components/Presentation.vue"
+import PinnedProjects from "@/components/Project/PinnedProjects.vue"
 </script>
 
 <template>

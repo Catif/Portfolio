@@ -1,20 +1,19 @@
 <script setup>
-import { inject } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { inject } from "vue"
+import { useRoute, useRouter } from "vue-router"
 
-const bus = inject('bus')
+const bus = inject("bus")
 const route = useRoute()
 const router = useRouter()
 
 function changeLanguage(lang) {
   const currentRoute = route.name
-  if (lang === 'fr') {
-    router.push({ name: currentRoute, params: { lang: 'fr' } })
-    bus.emit('changeLanguage', 'fr')
-  }
-  else {
-    router.push({ name: currentRoute, params: { lang: 'en' } })
-    bus.emit('changeLanguage', 'en')
+  if (lang === "fr") {
+    router.push({ name: currentRoute, params: { lang: "fr" } })
+    bus.emit("changeLanguage", "fr")
+  } else {
+    router.push({ name: currentRoute, params: { lang: "en" } })
+    bus.emit("changeLanguage", "en")
   }
 }
 </script>
@@ -23,12 +22,12 @@ function changeLanguage(lang) {
   <div id="choiceLanguage">
     <template v-if="route.params.lang === 'en'">
       <button @click="changeLanguage('fr')">
-        <img src="/img/locales/fr.webp">
+        <img src="/img/locales/fr.webp" />
       </button>
     </template>
     <template v-else>
       <button @click="changeLanguage('en')">
-        <img src="/img/locales/en.webp">
+        <img src="/img/locales/en.webp" />
       </button>
     </template>
   </div>

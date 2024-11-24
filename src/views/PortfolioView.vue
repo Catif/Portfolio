@@ -1,23 +1,26 @@
 <script setup>
-import { computed, inject, onMounted, ref } from 'vue'
+import { computed, inject, onMounted, ref } from "vue"
 
-import FinderWindow from '@/components/Finder/FinderWindow.vue'
+import FinderWindow from "@/components/Finder/FinderWindow.vue"
 
-const api = inject('api')
-const folderActive = ref('')
+const api = inject("api")
+const folderActive = ref("")
 const categories = ref([
   {
-    title: 'project.finder.categories.years',
+    title: "project.finder.categories.years",
     elements: [],
   },
 ])
 const projectsShow = computed(() => {
-  const category = categories.value.find(categoryTemp => categoryTemp.title === 'project.finder.categories.years')
-  if (category.elements.length === 0)
-    return []
+  const category = categories.value.find(
+    (categoryTemp) => categoryTemp.title === "project.finder.categories.years"
+  )
+  if (category.elements.length === 0) return []
 
   if (folderActive.value) {
-    const element = category.elements.find(elementTemp => elementTemp.name === folderActive.value)
+    const element = category.elements.find(
+      (elementTemp) => elementTemp.name === folderActive.value
+    )
     return element.projects
   }
 
@@ -25,23 +28,28 @@ const projectsShow = computed(() => {
 })
 
 function getBlogs() {
-  api.get('/items/project?fields=*,translations.*&sort=-done_at')
-    .then(response => response.data)
+  api
+    .get("/items/project?fields=*,translations.*&sort=-done_at")
+    .then((response) => response.data)
     .then((data) => {
       data = data.data
 
-      const category = categories.value.find(categoryTemp => categoryTemp.title === 'project.finder.categories.years')
+      const category = categories.value.find(
+        (categoryTemp) =>
+          categoryTemp.title === "project.finder.categories.years"
+      )
 
       data.forEach((project) => {
         const year = String(new Date(project.done_at).getFullYear())
-        const element = category.elements.find(elementTemp => elementTemp.name === year)
+        const element = category.elements.find(
+          (elementTemp) => elementTemp.name === year
+        )
         if (element) {
           element.projects.push(project)
-        }
-        else {
+        } else {
           category.elements.push({
             name: year,
-            icon: '/img/folder_mac_outline.png',
+            icon: "/img/folder_mac_outline.png",
             projects: [project],
           })
         }
@@ -50,7 +58,6 @@ function getBlogs() {
       setActiveFolder(category.elements[0].name)
     })
 }
-
 
 function setActiveFolder(folder) {
   folderActive.value = folder
@@ -72,6 +79,4 @@ onMounted(() => {
   </section>
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

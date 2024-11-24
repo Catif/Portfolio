@@ -1,14 +1,16 @@
 <script setup>
-import { inject, onMounted, ref } from 'vue'
-import PinnedProjectElement from '@/components/Project/PinnedProjectElement.vue'
+import { inject, onMounted, ref } from "vue"
+import PinnedProjectElement from "@/components/Project/PinnedProjectElement.vue"
 
-const api = inject('api')
+const api = inject("api")
 const projects = ref([])
 
-
 function getProjects() {
-  api.get('/items/project?filter[is_pinned][_eq]=true&fields=*,translations.*&sort=-done_at')
-    .then(response => response.data)
+  api
+    .get(
+      "/items/project?filter[is_pinned][_eq]=true&fields=*,translations.*&sort=-done_at"
+    )
+    .then((response) => response.data)
     .then((data) => {
       data = data.data
 
@@ -25,7 +27,11 @@ onMounted(() => {
   <section id="Projects">
     <h2>{{ $t("pinnedProjects.title") }}</h2>
     <div id="list-pinned-projects">
-      <PinnedProjectElement v-for="project in projects" :key="project.id" :project="project" />
+      <PinnedProjectElement
+        v-for="project in projects"
+        :key="project.id"
+        :project="project"
+      />
     </div>
   </section>
 </template>

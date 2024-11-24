@@ -29,7 +29,9 @@
       "titleConfetti": "DON'T CLICK !",
       "listRows": [
         { "text": "# Welcome" },
-        { "text": "This is my portfolio, and I hope you will appreciate my art." },
+        {
+          "text": "This is my portfolio, and I hope you will appreciate my art."
+        },
         { "text": "" },
         { "text": "## Introduction" },
         {

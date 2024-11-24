@@ -5,12 +5,15 @@
     <p>
       {{ $t("footer.mail.message") }}
       <a href="mailto:bradley.barbier@outlook.fr" target="_blank">
-        bradley.barbier@outlook.fr</a>
+        bradley.barbier@outlook.fr</a
+      >
     </p>
 
     <p>
       {{ $t("footer.linkedin.message") }}
-      <a href="https://www.linkedin.com/in/bradley-barbier/" target="_blank">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/bradley-barbier/" target="_blank"
+        >LinkedIn</a
+      >
     </p>
   </footer>
 </template>

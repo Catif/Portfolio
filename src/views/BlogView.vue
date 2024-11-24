@@ -1,14 +1,15 @@
 <script setup>
-import { inject, onMounted, ref } from 'vue'
+import { inject, onMounted, ref } from "vue"
 
-import BlogCard from '@/components/Blog/BlogCard.vue'
+import BlogCard from "@/components/Blog/BlogCard.vue"
 
-const api = inject('api')
+const api = inject("api")
 const blogs = ref([])
 
 function getBlogs() {
-  api.get('/items/blog?fields=*,translations.*&sort=-id')
-    .then(response => response.data)
+  api
+    .get("/items/blog?fields=*,translations.*&sort=-id")
+    .then((response) => response.data)
     .then((data) => {
       data = data.data
 

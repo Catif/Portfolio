@@ -1,11 +1,11 @@
 <script setup>
-import { computed, inject, onMounted, reactive, ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import Markdown from '../components/assets/Markdown.vue'
+import { computed, inject, onMounted, reactive, ref, watch } from "vue"
+import { useRoute, useRouter } from "vue-router"
+import Markdown from "../components/assets/Markdown.vue"
 
 const route = useRoute()
 const router = useRouter()
-const api = inject('api')
+const api = inject("api")
 const project = reactive({
   id: null,
   main_picture: null,
@@ -25,20 +25,21 @@ const project = reactive({
     tags: [],
   },
 })
-const lang = computed(() => route.params.lang ? route.params.lang : 'fr')
-const state = ref('loading')
+const lang = computed(() => (route.params.lang ? route.params.lang : "fr"))
+const state = ref("loading")
 const contentMarkdown = computed(() => project[lang.value].content)
 const done_in = computed(() => {
   const date = new Date(project.done_at)
-  const month = date.toLocaleString(lang.value, { month: 'long' })
+  const month = date.toLocaleString(lang.value, { month: "long" })
   const year = date.getFullYear()
 
   return `${month} ${year}`
 })
 
 function getProject(id) {
-  return api.get(`/items/project/${id}?fields=*,translations.*`)
-    .then(response => response.data)
+  return api
+    .get(`/items/project/${id}?fields=*,translations.*`)
+    .then((response) => response.data)
     .then((data) => {
       data = data.data
 
@@ -47,8 +48,12 @@ function getProject(id) {
       project.is_solo_project = data.is_solo_project
       project.done_at = data.done_at
 
-      const projectFr = data.translations.find(translation => translation.languages_code === 'fr-FR')
-      const projectEn = data.translations.find(translation => translation.languages_code === 'en-US')
+      const projectFr = data.translations.find(
+        (translation) => translation.languages_code === "fr-FR"
+      )
+      const projectEn = data.translations.find(
+        (translation) => translation.languages_code === "en-US"
+      )
 
       project.fr = {
         title: projectFr.title,
@@ -64,8 +69,7 @@ function getProject(id) {
           content: projectEn.content,
           tags: projectEn.tags,
         }
-      }
-      else {
+      } else {
         project.en = {
           title: projectFr.title,
           description: projectFr.description,
@@ -74,14 +78,17 @@ function getProject(id) {
         }
       }
 
-      state.value = 'loaded'
+      state.value = "loaded"
     })
     .catch(() => {
-      state.value = 'not-found'
+      state.value = "not-found"
 
       setTimeout(() => {
-        if (route.name === 'portfolio-element' && route.params.id_project === id)
-          router.push({ name: 'portfolio', params: { lang: lang.value } })
+        if (
+          route.name === "portfolio-element" &&
+          route.params.id_project === id
+        )
+          router.push({ name: "portfolio", params: { lang: lang.value } })
       }, 2000)
     })
 }
@@ -90,37 +97,46 @@ watch(lang, () => {
   if (project.id) {
     document.title = `Catif - ${project[lang.value].title}`
     // remove <br> in description
-    const description = project[lang.value].description.replace(/<br>/g, ' ')
-    document.querySelector('meta[name="description"]').setAttribute('content', description)
+    const description = project[lang.value].description.replace(/<br>/g, " ")
+    document
+      .querySelector('meta[name="description"]')
+      .setAttribute("content", description)
 
     // set keywords
-    const actualKeywords = document.querySelector('meta[name="keywords"]').getAttribute('content')
-    const keywords = project[lang.value].tags.join(', ')
-    document.querySelector('meta[name="keywords"]').setAttribute('content', `${actualKeywords}, ${keywords}`)
+    const actualKeywords = document
+      .querySelector('meta[name="keywords"]')
+      .getAttribute("content")
+    const keywords = project[lang.value].tags.join(", ")
+    document
+      .querySelector('meta[name="keywords"]')
+      .setAttribute("content", `${actualKeywords}, ${keywords}`)
   }
 })
 
 onMounted(() => {
   const id = route.params.id_project
 
-  if (!id)
-    router.push({ name: 'portfolio', params: { lang: lang.value } })
+  if (!id) router.push({ name: "portfolio", params: { lang: lang.value } })
 
   getProject(id).then(() => {
     document.title = `Catif - ${project[lang.value].title}`
     // remove <br> in description
-    const description = project[lang.value].description.replace(/<br>/g, ' ')
-    document.querySelector('meta[name="description"]').setAttribute('content', description)
+    const description = project[lang.value].description.replace(/<br>/g, " ")
+    document
+      .querySelector('meta[name="description"]')
+      .setAttribute("content", description)
 
     // set keywords
-    const actualKeywords = document.querySelector('meta[name="keywords"]').getAttribute('content')
-    const keywords = project[lang.value].tags.join(', ')
-    document.querySelector('meta[name="keywords"]').setAttribute('content', `${actualKeywords}, ${keywords}`)
+    const actualKeywords = document
+      .querySelector('meta[name="keywords"]')
+      .getAttribute("content")
+    const keywords = project[lang.value].tags.join(", ")
+    document
+      .querySelector('meta[name="keywords"]')
+      .setAttribute("content", `${actualKeywords}, ${keywords}`)
   })
 })
 </script>
-
-
 
 <template>
   <section id="Project">
@@ -128,21 +144,19 @@ onMounted(() => {
     <template v-if="state === 'loading'">
       <div class="loading">
         <div class="loading__text">
-          {{ $t('divers.loading') }}
+          {{ $t("divers.loading") }}
         </div>
       </div>
     </template>
-
 
     <!-- NOT FOUND -->
     <template v-else-if="state === 'not-found'">
       <div class="not-found">
         <div class="not-found__text">
-          {{ $t('project.project-not-found') }}
+          {{ $t("project.project-not-found") }}
         </div>
       </div>
     </template>
-
 
     <!-- LOADED -->
     <template v-else>
@@ -154,16 +168,16 @@ onMounted(() => {
           <div class="Project__header__list-info">
             <span class="team">
               <template v-if="project.is_solo_project">
-                {{ $t('project.solo-project') }}
-                <img src="/img/icons/user.svg" alt="solo icon">
+                {{ $t("project.solo-project") }}
+                <img src="/img/icons/user.svg" alt="solo icon" />
               </template>
               <template v-else>
-                {{ $t('project.team-project') }}
-                <img src="/img/icons/team.svg" alt="team icon">
+                {{ $t("project.team-project") }}
+                <img src="/img/icons/team.svg" alt="team icon" />
               </template>
             </span>
             <span v-if="project.done_at" class="date">
-              {{ $t('project.done-in') }} : {{ done_in }}
+              {{ $t("project.done-in") }} : {{ done_in }}
             </span>
             <div class="tags">
               Tags :
@@ -175,17 +189,18 @@ onMounted(() => {
             </div>
           </div>
           <div class="Project__header__picture">
-            <img :src="`https://api.catif.dev/assets/${project.main_picture}`" alt="Project main picture">
+            <img
+              :src="`https://api.catif.dev/assets/${project.main_picture}`"
+              alt="Project main picture"
+            />
           </div>
         </div>
-        <hr>
+        <hr />
         <Markdown class="Project__content" :markdown="contentMarkdown" />
       </article>
     </template>
   </section>
 </template>
-
-
 
 <style lang="scss">
 .Project {
@@ -215,8 +230,6 @@ onMounted(() => {
     &__title {
       font-size: 3rem;
       font-weight: 700;
-
-
     }
 
     &__list-info {
@@ -254,7 +267,7 @@ onMounted(() => {
           color: v.$color-font;
           font-size: 0.8rem;
           font-weight: 500;
-          border : 1px solid v.$color-font;
+          border: 1px solid v.$color-font;
         }
       }
     }
@@ -264,6 +277,5 @@ onMounted(() => {
     width: 100%;
     opacity: 0.2;
   }
-
 }
 </style>
