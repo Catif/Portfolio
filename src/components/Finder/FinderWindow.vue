@@ -1,6 +1,5 @@
 <script setup>
-import { ref, computed } from "vue"
-
+import { ref } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import WindowActions from "./WindowActions.vue"
 import FinderCategory from "./FinderCategory.vue"
@@ -27,7 +26,6 @@ const props = defineProps({
 const router = useRouter()
 const route = useRoute()
 const elementFocus = ref(null)
-const lang = computed(() => (route.params.lang ? route.params.lang : "fr"))
 
 function focusElement(element) {
   if (!element.id) return
