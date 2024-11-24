@@ -226,7 +226,7 @@ onMounted(() => {
       gap: 0.5rem;
       font-size: 1rem;
       font-weight: 500;
-      color: $color-font;
+      color: v.$color-font;
       opacity: 0.7;
       text-underline-offset: 0.2rem;
 
@@ -251,10 +251,10 @@ onMounted(() => {
         .tag {
           padding: 0.2rem 0.5rem;
           border-radius: 0.5rem;
-          color: $color-font;
+          color: v.$color-font;
           font-size: 0.8rem;
           font-weight: 500;
-          border : 1px solid $color-font;
+          border : 1px solid v.$color-font;
         }
       }
     }

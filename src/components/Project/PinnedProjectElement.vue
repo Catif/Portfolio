@@ -127,7 +127,7 @@ const projectComputed = computed(() => {
       h3 {
         font-size: 1.5rem;
         font-weight: 500;
-        color: $color-font;
+        color: v.$color-font;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
@@ -143,7 +143,7 @@ const projectComputed = computed(() => {
     p {
       font-size: 1rem;
       font-weight: 300;
-      color: $color-font;
+      color: v.$color-font;
       margin: 0px;
       margin-bottom: 0;
 
@@ -166,14 +166,14 @@ const projectComputed = computed(() => {
       span {
         font-size: 0.9rem;
         font-weight: 400;
-        color: $color-font;
-        background-color: $color-secondary-background;
+        color: v.$color-font;
+        background-color: v.$color-secondary-background;
         padding: 5px 10px;
         border-radius: 5px;
-        border: 1px solid lighten($color-background, 10);
+        border: 1px solid color.adjust(v.$color-background, $lightness: 10%);
 
         &:hover {
-          background-color: lighten($color-background, 10);
+          background-color: color.adjust(v.$color-background, $lightness: 10%);
         }
       }
     }
@@ -187,7 +187,7 @@ const projectComputed = computed(() => {
 
       a {
         width: 100%;
-        color: $color-font;
+        color: v.$color-font;
         background-color: hsla(0, 0%, 30%, 0.2);
         display: flex;
         align-items: center;
@@ -207,7 +207,7 @@ const projectComputed = computed(() => {
         transition: all 0.2s ease-in-out;
 
         &:hover {
-          background-color: lighten($color-background, 10);
+          background-color: color.adjust(v.$color-background, $lightness: 10%);
         }
       }
     }

@@ -38,13 +38,3 @@ provide('api', api)
 
   <Footer />
 </template>
-
-<style lang="scss">
-@import "@/assets/scss/reset.scss";
-@import "@/assets/scss/basic.scss";
-
-/* Animation de transition de page */
-@import "@/assets/scss/animation/fade.scss";
-
-/* temp */
-</style>

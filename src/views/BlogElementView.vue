@@ -202,7 +202,7 @@ onMounted(() => {
         display: inline;
         font-size: 1rem;
         font-weight: 500;
-        color: $color-font;
+        color: v.$color-font;
         opacity: 0.7;
         text-decoration: underline;
         text-underline-offset: 0.2rem;
@@ -216,7 +216,7 @@ onMounted(() => {
       margin-top: 1rem;
       font-size: 1rem;
       font-weight: 500;
-      color: $color-font;
+      color: v.$color-font;
       opacity: 0.7;
     }
   }

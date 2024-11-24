@@ -1,3 +1,5 @@
+@use "variables.scss" as v;
+
 *{box-sizing: border-box;}
 
 html {
@@ -5,11 +7,11 @@ html {
 }
 
 body{
-    font-family: $font-family;
+    font-family: v.$font-family;
     font-size: 16px;
     line-height: 1.1;
-    color: $color-font;
-    background-color: $color-background;
+    color: v.$color-font;
+    background-color: v.$color-background;
     overflow-x: hidden;
 
     min-height: 100%;
@@ -29,11 +31,11 @@ header#nav {
 }
 
 a {
-    color: $color-link;
+    color: v.$color-link;
     text-decoration: none;
 
     &:hover {
-        color: $color-link-hover;
+        color: v.$color-link-hover;
     }
 }
 
@@ -54,6 +56,6 @@ section {
 	h2 {
 		font-size: 2.3rem;
 		font-weight: 600;
-		color: $color-font;
+		color: v.$color-font;
 	}
 }

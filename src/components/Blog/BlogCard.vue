@@ -75,30 +75,28 @@ const dateBlog = computed(() => new Date(props.blog.published_at).toLocaleDateSt
 
 
 <style lang="scss">
-@import "@/assets/scss/variables.scss";
-
 .blogCard {
   position: relative;
   cursor: pointer;
   width: 100%;
   padding: 1rem 2rem;
-  background-color: $color-secondary-background;
+  background-color: v.$color-secondary-background;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   transition: transform 0.2s ease-in-out;
   z-index: 1;
-  color: $color-font;
+  color: v.$color-font;
 
   &:hover {
     transform: scale(1.05);
-    color: $color-font;
+    color: v.$color-font;
   }
 
   &__title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: $color-font;
+    color: v.$color-font;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -111,7 +109,7 @@ const dateBlog = computed(() => new Date(props.blog.published_at).toLocaleDateSt
       transform: translateY(-50%);
       font-size: 0.75rem;
       font-weight: 700;
-      color: $color-font;
+      color: v.$color-font;
       opacity: 0.45;
       margin-left: 1rem;
     }
@@ -120,7 +118,7 @@ const dateBlog = computed(() => new Date(props.blog.published_at).toLocaleDateSt
   &__description {
     font-size: 1rem;
     font-weight: 400;
-    color: $color-font;
+    color: v.$color-font;
     opacity: 0.7;
   }
 
@@ -141,9 +139,9 @@ const dateBlog = computed(() => new Date(props.blog.published_at).toLocaleDateSt
 
       .tag {
         padding: 0.5rem 1rem;
-        background-color: $color-background;
-        border: 1px solid $color-font;
-        color: $color-font;
+        background-color: v.$color-background;
+        border: 1px solid v.$color-font;
+        color: v.$color-font;
         border-radius: 0.5rem;
         font-size: 0.75rem;
         font-weight: 700;

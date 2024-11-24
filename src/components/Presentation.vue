@@ -83,7 +83,7 @@ function runConffeti() {
       h2 {
         font-size: 2.5rem;
         font-weight: 600;
-        color: $color-font;
+        color: v.$color-font;
       }
       h3 {
         background-position: 50% 50%;
@@ -102,7 +102,7 @@ function runConffeti() {
         margin-top: 10px;
         font-size: 1.3rem;
         font-weight: 300;
-        color: $color-font;
+        color: v.$color-font;
         text-align: justify;
       }
 
@@ -113,15 +113,15 @@ function runConffeti() {
         margin-top: 20px;
         padding: 10px 20px;
         border-radius: 5px;
-        background-color: $color-secondary-background;
-        color: $color-font;
+        background-color: v.$color-secondary-background;
+        color: v.$color-font;
         font-size: 1.2rem;
         font-weight: 500;
         text-decoration: none;
         transition: background-color 0.2s ease-in-out;
 
         &:hover {
-          background-color: lighten($color-secondary-background, 5%);
+          background-color: color.adjust(v.$color-secondary-background, $lightness: 5%);
         }
       }
     }
@@ -205,7 +205,7 @@ function runConffeti() {
         display: grid;
         grid-template-columns: 20px 1fr;
         grid-gap: 10px;
-        font-family: $font-family-mono;
+        font-family: v.$font-family-mono;
 
         .number {
           display: flex;

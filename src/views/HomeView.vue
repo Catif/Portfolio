@@ -14,6 +14,6 @@ import PinnedProjects from '@/components/Project/PinnedProjects.vue'
 
 <style lang="scss" scoped>
 section:nth-child(even) {
-  background-color: $color-secondary-background;
+  background-color: v.$color-secondary-background;
 }
 </style>

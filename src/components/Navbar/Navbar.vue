@@ -50,7 +50,7 @@ function changeRoute(name) {
 
 <style lang="scss" scoped>
 nav {
-  background: $color-background-nav;
+  background: v.$color-background-nav;
   display: flex;
   position: fixed;
   width: 100%;
@@ -59,10 +59,10 @@ nav {
   padding: 20px 40px;
   z-index: 100;
 
-  color: $color-link-nav;
+  color: v.$color-link-nav;
 
   #name {
-    font-family: $font-family-mono;
+    font-family: v.$font-family-mono;
     font-size: 1.4rem;
     font-weight: 600;
 
@@ -75,12 +75,12 @@ nav {
     }
 
     #action {
-      color: $color-link-nav;
+      color: v.$color-link-nav;
     }
   }
 
   #menu {
-    font-family: $font-family-mono;
+    font-family: v.$font-family-mono;
     display: flex;
     gap: 20px;
     font-size: 1.3rem;
@@ -102,7 +102,7 @@ nav {
     }
     a {
       padding: 0px 10px;
-      color: $color-link-nav;
+      color: v.$color-link-nav;
     }
   }
 }

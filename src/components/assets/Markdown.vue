@@ -176,8 +176,6 @@ onMounted(async () => {
 
 
 <style lang="scss">
-@import '@/assets/highlightjs/github-dark-dimmed.css';
-
 .Markdown {
   h1 {
     font-size: 2rem;
@@ -207,7 +205,7 @@ onMounted(async () => {
   }
 
   hr {
-    border: 1px solid $color-font;
+    border: 1px solid v.$color-font;
     opacity: 0.2;
     margin: 1.5rem 0;
   }
@@ -228,10 +226,10 @@ onMounted(async () => {
   }
 
   a {
-    color: $color-link;
+    color: v.$color-link;
 
     &:hover {
-      color: $color-link-hover;
+      color: v.$color-link-hover;
     }
   }
 
@@ -261,14 +259,14 @@ onMounted(async () => {
   }
 
   pre {
-    background-color: $color-secondary-background;
-    font-family: $font-family-mono;
+    background-color: v.$color-secondary-background;
+    font-family: v.$font-family-mono;
     font-size: .9em;
     width: 100%;
     border-radius: 5px;
     white-space: pre-wrap;
     margin-bottom: 2rem;
-    border: 1px solid $color-font;
+    border: 1px solid v.$color-font;
     opacity: 0.9;
 
     code {
@@ -279,7 +277,7 @@ onMounted(async () => {
 
     .code-header {
       width: 100%;
-      border-bottom: 1px solid $color-font;
+      border-bottom: 1px solid v.$color-font;
       padding: .5rem 1rem;
 
       display: flex;
@@ -287,13 +285,13 @@ onMounted(async () => {
       align-items: center;
 
       .copy-button {
-        background-color: $color-secondary-background;
-        border: 1px solid $color-font;
+        background-color: v.$color-secondary-background;
+        border: 1px solid v.$color-font;
         border-radius: 5px;
         padding: .5rem 1rem;
         cursor: pointer;
         transition: all .2s ease-in-out;
-        color: $color-font;
+        color: v.$color-font;
         opacity: 0.5;
 
         &:hover {
@@ -317,7 +315,7 @@ onMounted(async () => {
         display: inline-block;
         min-width: 4rem;
         margin-right: 1rem;
-        border-right: 1px solid $color-font;
+        border-right: 1px solid v.$color-font;
         padding: 0 1rem;
         text-align: right;
 

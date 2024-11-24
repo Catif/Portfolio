@@ -4,7 +4,6 @@ import { defineConfig } from 'vite'
 
 import vue from '@vitejs/plugin-vue'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
-import Visualizer from 'rollup-plugin-visualizer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,7 +14,6 @@ export default defineConfig({
       // locale messages resource pre-compile option
       include: resolve(dirname(fileURLToPath(import.meta.url)), './path/to/src/locales/**'),
     }),
-    Visualizer({ filename: './visualiser_bundler/stats.html' }),
   ],
   resolve: {
     alias: {
@@ -25,7 +23,12 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "@/assets/scss/_variables.scss";',
+        api: 'modern-compiler',
+        additionalData: `
+          @use "@/assets/scss/variables.scss" as v;
+          @use "@/assets/scss/global.scss";
+          @use "sass:color";
+        `,
       },
     },
   },

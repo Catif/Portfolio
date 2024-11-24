@@ -19,7 +19,7 @@
 footer {
   margin-top: auto;
 
-  background-color: $color-background-nav;
+  background-color: v.$color-background-nav;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@ footer {
   h2 {
     font-size: 2.3rem;
     font-weight: 600;
-    color: $color-font;
+    color: v.$color-font;
   }
 }
 </style>
