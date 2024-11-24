@@ -7,8 +7,10 @@
 /* Markdown theme code */
 @use "@/assets/highlightjs/github-dark-dimmed.css";
 
-/* Font */
-@use "@/assets/fonts/San_Francisco/sanfrancisco.css";
+/* Fonts */
+@use "@/assets/fonts/Font_San_Francisco.css";
+@use "@/assets/fonts/Font_Source_Code_Pro.scss";
+@use "@/assets/fonts/Font_Source_Sans_Pro.scss";
 
 /* Css perso */
 @use "@/assets/scss/basic.scss";
