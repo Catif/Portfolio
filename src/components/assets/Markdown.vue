@@ -153,8 +153,8 @@ onMounted(async () => {
   )
 
   const renderer = new marked.value.Renderer()
-  renderer.link = (href, title, text) =>
-    `<a target="_blank" href="${href}">${text}</a>`
+  renderer.link = (info) =>
+    `<a target="_blank" href="${info.href}">${info.text}</a>`
 
   // Marked settings
   marked.value.setOptions({
