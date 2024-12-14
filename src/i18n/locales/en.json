@@ -2,13 +2,11 @@
   "divers": {
     "loading": "Loading..."
   },
-
   "navbar": {
     "home": "home",
     "portfolio": "portfolio",
     "blog": "blog"
   },
-
   "footer": {
     "mail": {
       "message": "You can contact me at"
@@ -17,46 +15,20 @@
       "message": "Or by"
     }
   },
-
   "presentation": {
     "Me": {
       "name": "My name is",
-      "presentation": "After 4 years’ experience in web development, learnt at school and personal time. I’m able to create websites for your company. I stay connected about new technologies to use them in my new futures projects.",
+      "presentation": "As a versatile back-end and front-end developer, I create websites. \nCurrently, I work at Apitech Solutions, a company specializing in the development of web applications for businesses.",
       "downloadCV": "Download my CV",
       "downloadCVLink": "/files/en/CV_Bradley-Barbier.pdf"
     },
     "IDE": {
-      "titleConfetti": "DON'T CLICK !",
-      "listRows": [
-        { "text": "# Welcome" },
-        {
-          "text": "This is my portfolio, and I hope you will appreciate my art."
-        },
-        { "text": "" },
-        { "text": "## Introduction" },
-        {
-          "text": "Having completed my studies in Licence Professionnelle CIASIE. I'm looking for a nice job in web development. (Maybe with you? 🥲)"
-        },
-        { "text": "" },
-        { "text": "## My skills" },
-        {
-          "text": "I am a full stack developer, and I can do a lot of things, but I will not list them all, just the most important ones."
-        },
-        { "text": "" },
-        { "text": "- HTML / CSS(SASS) / JS" },
-        { "text": "- VueJS" },
-        { "text": "- PHP / SLIM" },
-        { "text": "- MySQL / MariaDB" },
-        { "text": "- Flutter / Dart" },
-        { "text": "" }
-      ]
+      "titleConfetti": "DON'T CLICK !"
     }
   },
-
   "pinnedProjects": {
     "title": "Pinned projects"
   },
-
   "project": {
     "title": "Projects",
     "see-more": "See more",
@@ -70,12 +42,14 @@
       }
     }
   },
-
   "blog": {
     "title": "Blog",
     "post-not-found": "Post not found, you will be redirected to the list of posts in 2 seconds...",
     "created-at": "Created at",
     "updated-at": "Updated at",
     "minutes-read": "minutes to read"
+  },
+  "general": {
+    "loading": "Loading..."
   }
 }

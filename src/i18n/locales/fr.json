@@ -2,13 +2,11 @@
   "divers": {
     "loading": "Chargement..."
   },
-
   "navbar": {
     "home": "accueil",
     "portfolio": "portfolio",
     "blog": "blog"
   },
-
   "footer": {
     "mail": {
       "message": "Vous pouvez me contacter sur"
@@ -17,46 +15,20 @@
       "message": "Ou sur"
     }
   },
-
   "presentation": {
     "Me": {
       "name": "Je m'appelle",
-      "presentation": "Après 4 ans d'expérience dans le développement web, appris à l'école et en temps personnel. Je suis capable de créer des sites web pour votre entreprise. Je reste connecté aux nouvelles technologies pour les utiliser dans mes nouveaux projets futurs.",
+      "presentation": "En tant que développeur polyvalent en back-end et front-end, je crée des sites internet. Actuellement, je travaille chez Apitech Solutions, une entreprise spécialisée dans le développement d'applications web pour les entreprises.",
       "downloadCV": "Télécharger mon CV",
       "downloadCVLink": "/files/fr/CV_Bradley-Barbier.pdf"
     },
     "IDE": {
-      "titleConfetti": "NE CLIQUEZ PAS !",
-      "listRows": [
-        { "text": "# Bienvenue" },
-        {
-          "text": "Ceci est mon portfolio, et j'espère que vous apprécierez mon art."
-        },
-        { "text": "" },
-        { "text": "## Introduction" },
-        {
-          "text": "Ayant terminé mes études en Licence Professionnelle CIASIE. Je suis à la recherche d'un beau travail dans le développement web. (Peut-être chez vous ? 🥲)"
-        },
-        { "text": "" },
-        { "text": "## Mes compétences" },
-        {
-          "text": "Je suis un développeur full stack, et je peux faire beaucoup de choses, mais je ne vais pas tout lister, juste les plus importantes."
-        },
-        { "text": "" },
-        { "text": "- HTML / CSS(SASS) / JS" },
-        { "text": "- VueJS" },
-        { "text": "- PHP / SLIM" },
-        { "text": "- MySQL / MariaDB" },
-        { "text": "- Flutter / Dart" },
-        { "text": "" }
-      ]
+      "titleConfetti": "NE CLIQUEZ PAS !"
     }
   },
-
   "pinnedProjects": {
     "title": "Projets épinglés"
   },
-
   "project": {
     "title": "Projets",
     "see-more": "Voir plus",
@@ -70,12 +42,14 @@
       }
     }
   },
-
   "blog": {
     "title": "Blog",
     "post-not-found": "Post non trouvé, vous allez être redirigé vers la liste des posts dans 2 secondes...",
     "created-at": "Créé le",
     "updated-at": "Mis à jour le",
     "minutes-read": "minutes de lecture"
+  },
+  "general": {
+    "loading": "Chargement..."
   }
 }
