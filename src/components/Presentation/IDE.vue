@@ -1,9 +1,6 @@
 <script setup>
-import { inject, ref } from "vue"
-// import markdown file and format it
 import useMarkdown from "@/composables/useMarkdown"
 import IDERow from "./IDERow.vue"
-import { useRoute } from "vue-router"
 
 const disabledActions = ref(false)
 const confetti = inject("confetti")
@@ -69,14 +66,21 @@ function loadMarkdown(lang) {
     <div class="list-rows">
       <!-- $tm('presentation.IDE.listRows') -->
       <template v-if="data">
-        <div v-for="(row, index) in data" :key="index" class="row">
+        <div
+          v-for="(row, index) in data"
+          :key="index"
+          class="row"
+        >
           <div class="number">
             <p>{{ index + 1 }}</p>
           </div>
           <IDERow :row="row" />
         </div>
       </template>
-      <div v-else class="row">
+      <div
+        v-else
+        class="row"
+      >
         <div class="number">
           <p>{{ 1 }}</p>
         </div>

@@ -1,5 +1,4 @@
 <script setup>
-import { onMounted, ref, watch } from "vue"
 import { Marked } from "marked"
 import { markedHighlight } from "marked-highlight"
 
@@ -168,7 +167,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="outputMarkdown" class="Markdown" />
+  <div
+    ref="outputMarkdown"
+    class="Markdown"
+  />
 </template>
 
 <style lang="scss">

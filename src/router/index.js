@@ -60,42 +60,6 @@ const router = createRouter({
             },
           },
         },
-        {
-          path: "blog",
-          name: "blog",
-          component: () => import("@/views/BlogView.vue"),
-          meta: {
-            fr: {
-              title: "Catif - Blog",
-              description: "Page de mon blog",
-              keywords: "blog, catif, bradley, barbier, bradley barbier",
-            },
-            en: {
-              title: "Catif - Blog",
-              description: "Blog page of my portfolio",
-              keywords: "blog, catif, bradley, barbier, bradley barbier",
-            },
-          },
-        },
-        {
-          path: "blog/:id_blog",
-          name: "blog-element",
-          component: () => import("@/views/BlogElementView.vue"),
-          meta: {
-            fr: {
-              title: "Catif - Blog",
-              description: "Page de mon blog",
-              keywords:
-                "blog, article, catif, bradley, barbier, bradley barbier",
-            },
-            en: {
-              title: "Catif - Blog",
-              description: "Blog page of my portfolio",
-              keywords:
-                "blog, article, catif, bradley, barbier, bradley barbier",
-            },
-          },
-        },
       ],
     },
   ],

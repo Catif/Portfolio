@@ -1,6 +1,4 @@
 <script setup>
-import { provide } from "vue"
-import { RouterView } from "vue-router"
 import mitt from "mitt"
 import JSConfetti from "js-confetti"
 import axios from "axios"
@@ -30,7 +28,10 @@ provide("api", api)
 
   <article>
     <RouterView v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
+      <transition
+        name="fade"
+        mode="out-in"
+      >
         <component :is="Component" />
       </transition>
     </RouterView>

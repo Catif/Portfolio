@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from "vue"
-import { useRoute, useRouter } from "vue-router"
 import WindowActions from "./WindowActions.vue"
 import FinderCategory from "./FinderCategory.vue"
 import FinderElement from "./FinderElement.vue"
@@ -51,7 +49,10 @@ function openElement(element) {
     <div class="left-side">
       <WindowActions />
       <div class="categories">
-        <template v-for="category in categories" :key="category.title">
+        <template
+          v-for="category in categories"
+          :key="category.title"
+        >
           <FinderCategory
             :category="category"
             :set-active-folder="setActiveFolder"
@@ -65,8 +66,14 @@ function openElement(element) {
         <h2>{{ $t("project.title") }}</h2>
       </div>
 
-      <div class="right-side__content" @click="focusElement({})">
-        <template v-for="project in props.projects" :key="project.blog_id">
+      <div
+        class="right-side__content"
+        @click="focusElement({})"
+      >
+        <template
+          v-for="project in props.projects"
+          :key="project.blog_id"
+        >
           <FinderElement
             :element="project"
             :focus-element="focusElement"
@@ -76,9 +83,15 @@ function openElement(element) {
         </template>
       </div>
     </div>
-    <div class="panel" v-if="elementFocus">
+    <div
+      class="panel"
+      v-if="elementFocus"
+    >
       <div class="panel__pictures">
-        <img v-for="picture in elementFocus.pictures" :src="picture" />
+        <img
+          v-for="picture in elementFocus.pictures"
+          :src="picture"
+        />
       </div>
     </div>
   </div>

@@ -1,7 +1,4 @@
 <script setup>
-import { computed } from "vue"
-import { useRoute } from "vue-router"
-
 import Markdown from "@/components/assets/Markdown.vue"
 
 const props = defineProps({
@@ -79,7 +76,10 @@ const projectComputed = computed(() => {
       <Markdown :markdown="projectComputed[lang].description" />
 
       <div class="pinnedProject__side__technologies">
-        <span v-for="tag in projectComputed[lang].tags" :key="tag">
+        <span
+          v-for="tag in projectComputed[lang].tags"
+          :key="tag"
+        >
           {{ tag }}
         </span>
       </div>

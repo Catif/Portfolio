@@ -1,6 +1,4 @@
 <script setup>
-import { defineProps, computed } from "vue"
-
 const props = defineProps({
   row: Object,
 })
@@ -47,7 +45,10 @@ const rowFormatedHTML = computed(() => {
 </script>
 
 <template>
-  <p class="text" v-html="rowFormatedHTML" />
+  <p
+    class="text"
+    v-html="rowFormatedHTML"
+  />
 </template>
 
 <style lang="scss">

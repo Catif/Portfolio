@@ -1,7 +1,4 @@
 <script setup>
-import { inject } from "vue"
-import { useRoute, useRouter } from "vue-router"
-
 const bus = inject("bus")
 const route = useRoute()
 const router = useRouter()

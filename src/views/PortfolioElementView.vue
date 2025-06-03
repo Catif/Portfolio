@@ -1,6 +1,4 @@
 <script setup>
-import { computed, inject, onMounted, reactive, ref, watch } from "vue"
-import { useRoute, useRouter } from "vue-router"
 import Markdown from "../components/assets/Markdown.vue"
 
 const route = useRoute()
@@ -169,19 +167,31 @@ onMounted(() => {
             <span class="team">
               <template v-if="project.is_solo_project">
                 {{ $t("project.solo-project") }}
-                <img src="/img/icons/user.svg" alt="solo icon" />
+                <img
+                  src="/img/icons/user.svg"
+                  alt="solo icon"
+                />
               </template>
               <template v-else>
                 {{ $t("project.team-project") }}
-                <img src="/img/icons/team.svg" alt="team icon" />
+                <img
+                  src="/img/icons/team.svg"
+                  alt="team icon"
+                />
               </template>
             </span>
-            <span v-if="project.done_at" class="date">
+            <span
+              v-if="project.done_at"
+              class="date"
+            >
               {{ $t("project.done-in") }} : {{ done_in }}
             </span>
             <div class="tags">
               Tags :
-              <template v-for="tag in project[lang].tags" :key="tag">
+              <template
+                v-for="tag in project[lang].tags"
+                :key="tag"
+              >
                 <span class="tag">
                   {{ tag }}
                 </span>
@@ -196,7 +206,10 @@ onMounted(() => {
           </div>
         </div>
         <hr />
-        <Markdown class="Project__content" :markdown="contentMarkdown" />
+        <Markdown
+          class="Project__content"
+          :markdown="contentMarkdown"
+        />
       </article>
     </template>
   </section>

@@ -1,5 +1,4 @@
 <script setup>
-import { inject, onMounted, ref } from "vue"
 import PinnedProjectElement from "@/components/Project/PinnedProjectElement.vue"
 
 const api = inject("api")

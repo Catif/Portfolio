@@ -1,6 +1,4 @@
 <script setup>
-import { inject, ref } from "vue"
-
 const disabledActions = ref(false)
 const confetti = inject("confetti")
 
@@ -25,9 +23,18 @@ function runConffeti() {
 
 <template>
   <div class="list-actions">
-    <span class="action close" @click="runConffeti" />
-    <span class="action minimize" @click="runConffeti" />
-    <span class="action maximize" @click="runConffeti" />
+    <span
+      class="action close"
+      @click="runConffeti"
+    />
+    <span
+      class="action minimize"
+      @click="runConffeti"
+    />
+    <span
+      class="action maximize"
+      @click="runConffeti"
+    />
   </div>
 </template>
 

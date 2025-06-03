@@ -1,6 +1,4 @@
 <script setup>
-import { computed, inject, onMounted, ref } from "vue"
-
 import FinderWindow from "@/components/Finder/FinderWindow.vue"
 
 const api = inject("api")

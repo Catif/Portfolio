@@ -27,3 +27,15 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## Config Directus
+
+Generation of the `key` / `secret` env : 
+
+- `cat /proc/sys/kernel/random/uuid`
+
+Creation of the first admin user :
+
+1 - Connect to the container
+2 - run this command : 
+  - `npx directus users create --email admin@example.net --password password --role "86416638-a48b-46cc-9fa2-efa0b5f0d803"`
