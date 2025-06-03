@@ -2,11 +2,11 @@ services:
   vue:
     build: .
     ports:
-      - "8080:80"
+      - "8080:8080"
 
   # API
   directus:
-    image: directus/directus:latest
+    image: directus/directus:11.2.2
     ports:
       - 8055:8055
     volumes:
