@@ -1,5 +1,4 @@
 <script setup>
-import BlogLastPost from "../components/Blog/BlogLastPost.vue"
 import Presentation from "@/components/Presentation/index.vue"
 import PinnedProjects from "@/components/Project/PinnedProjects.vue"
 </script>
@@ -8,7 +7,6 @@ import PinnedProjects from "@/components/Project/PinnedProjects.vue"
   <div>
     <Presentation />
     <PinnedProjects />
-    <BlogLastPost />
   </div>
 </template>
 
