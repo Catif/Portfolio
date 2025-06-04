@@ -90,6 +90,7 @@ function openElement(element) {
       <div class="panel__pictures">
         <img
           v-for="picture in elementFocus.pictures"
+          :key="picture"
           :src="picture"
         />
       </div>
