@@ -171,7 +171,6 @@ const projectComputed = computed(() => {
       margin-bottom: 0;
 
       max-height: 100px;
-      overflow: auto;
     }
 
     &__technologies {

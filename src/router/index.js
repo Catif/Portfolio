@@ -12,6 +12,7 @@ const router = createRouter({
           name: "home",
           component: () => import("@/views/HomeView.vue"),
           meta: {
+            navbarCode: 'navbar.home',
             fr: {
               title: "Catif - Accueil",
               description: "Page d'accueil de mon portfolio",
@@ -31,6 +32,7 @@ const router = createRouter({
           name: "portfolio",
           component: () => import("@/views/PortfolioView.vue"),
           meta: {
+            navbarCode: 'navbar.portfolio',
             fr: {
               title: "Catif - Portfolio",
               description: "Page de mon portfolio",
@@ -48,6 +50,7 @@ const router = createRouter({
           name: "portfolio-element",
           component: () => import("@/views/PortfolioElementView.vue"),
           meta: {
+            navbarCode: 'navbar.portfolio',
             fr: {
               title: "Catif - Portfolio",
               description: "Page de mon portfolio",

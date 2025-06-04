@@ -2,20 +2,18 @@
 import LanguageNav from "@/components/Navbar/LanguageNav.vue"
 
 const actualRouteCodeTrad = ref("")
+const router = useRouter()
 const route = useRoute()
 
-function changeRoute(name) {
-  actualRouteCodeTrad.value = name
-}
+watch(router.currentRoute, (route) => {
+  actualRouteCodeTrad.value = route.meta.navbarCode
+})
 </script>
 
 <template>
   <nav>
     <div id="name">
-      <router-link
-        to="/"
-        @click="changeRoute('')"
-      >
+      <router-link to="/">
         <span id="user">bradley@barbier</span>
         <span id="colon">:</span>
         <span id="action"
@@ -36,15 +34,11 @@ function changeRoute(name) {
 
     <div id="menu">
       <span>cd</span>
-      <router-link
-        :to="{ name: 'home', params: { lang: route.params.lang } }"
-        @click="changeRoute('navbar.home')"
-      >
+      <router-link :to="{ name: 'home', params: { lang: route.params.lang } }">
         {{ $t("navbar.home") }}
       </router-link>
       <router-link
         :to="{ name: 'portfolio', params: { lang: route.params.lang } }"
-        @click="changeRoute('navbar.portfolio')"
       >
         {{ $t("navbar.portfolio") }}
       </router-link>

@@ -19,6 +19,14 @@ const api = axios.create({
 provide("bus", bus)
 provide("confetti", confetti)
 provide("api", api)
+
+const firstLoad = ref(false)
+
+onMounted(() => {
+  setTimeout(() => {
+    firstLoad.value = true
+  }, 200)
+})
 </script>
 
 <template>
@@ -26,16 +34,18 @@ provide("api", api)
     <Navbar />
   </header>
 
-  <article>
-    <RouterView v-slot="{ Component }">
-      <transition
-        name="fade"
-        mode="out-in"
-      >
-        <component :is="Component" />
-      </transition>
-    </RouterView>
-  </article>
+  <template v-if="firstLoad">
+    <article>
+      <RouterView v-slot="{ Component }">
+        <transition
+          name="fade"
+          mode="out-in"
+        >
+          <component :is="Component" />
+        </transition>
+      </RouterView>
+    </article>
 
-  <Footer />
+    <Footer />
+  </template>
 </template>
