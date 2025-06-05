@@ -24,11 +24,14 @@ const props = defineProps({
 const router = useRouter()
 const route = useRoute()
 const elementFocus = ref(null)
+const lang = computed(() => (route.params.lang ? route.params.lang : "fr"))
 
 function focusElement(element) {
   if (!element.id) return
 
   elementFocus.value = element
+
+  console.log(elementFocus.value)
 }
 
 function openElement(element) {
@@ -87,6 +90,15 @@ function openElement(element) {
       class="panel"
       v-if="elementFocus"
     >
+      <div class="panel__technologies">
+        <span
+          v-for="tag in elementFocus[lang].tags"
+          :key="tag"
+        >
+          {{ tag }}
+        </span>
+      </div>
+
       <div class="panel__pictures">
         <img
           v-for="picture in elementFocus.pictures"
@@ -172,8 +184,39 @@ $background-folder: #232527;
     max-width: 500px;
     padding: 1rem 0.5rem;
     background-color: $background-categories;
-    border-top: 1px solid rgba(0, 0, 0, 0.8);
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__technologies {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-height: 66px;
+      overflow-y: auto;
+      width: 100%;
+
+      span {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: v.$color-font;
+        background-color: color.adjust(
+          v.$color-secondary-background,
+          $alpha: 0.5
+        );
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid color.adjust(v.$color-background, $lightness: 10%);
+
+        &:hover {
+          background-color: color.adjust(v.$color-background, $lightness: 10%);
+        }
+      }
+    }
 
     &__pictures {
       display: flex;
