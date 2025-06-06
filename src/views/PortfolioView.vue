@@ -72,8 +72,8 @@ onMounted(() => {
     <FinderWindow
       :categories="categories"
       :projects="projectsShow"
-      :set-active-folder="setActiveFolder"
       :folder-active="folderActive"
+      @setActiveFolder="setActiveFolder"
     />
   </section>
 </template>

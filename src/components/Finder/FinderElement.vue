@@ -4,18 +4,12 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  focusElement: {
-    type: Function,
-    required: true,
-  },
   elementFocus: {
     type: Object,
   },
-  openElement: {
-    type: Function,
-    required: true,
-  },
 })
+
+const emits = defineEmits(["focusElement", "openElement"])
 
 const route = useRoute()
 const lang = computed(() => (route.params.lang ? route.params.lang : "fr"))
@@ -74,13 +68,13 @@ function generateUrlPictures(element) {
       class="element__icon"
       src="/img/folder/folder_mac_minified.png"
       alt="folder"
-      @click="focusElement(elementComputed)"
-      @dblclick="openElement(elementComputed)"
+      @click.stop="emits('focusElement', elementComputed)"
+      @dblclick="emits('openElement', elementComputed)"
     />
     <div class="element__name">
       <p
-        @click="focusElement(elementComputed)"
-        @dblclick="openElement(elementComputed)"
+        @click.stop="emits('focusElement', elementComputed)"
+        @dblclick="emits('openElement', elementComputed)"
       >
         {{ elementComputed[lang].title }}
       </p>

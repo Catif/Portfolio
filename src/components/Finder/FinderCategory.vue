@@ -6,15 +6,13 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  setActiveFolder: {
-    type: Function,
-    required: true,
-  },
   folderActive: {
     type: String,
     required: true,
   },
 })
+
+const emits = defineEmits(["setActiveFolder"])
 </script>
 
 <template>
@@ -23,11 +21,14 @@ const props = defineProps({
       {{ $t(category.title) }}
     </p>
     <div class="category__elements">
-      <template v-for="element in category.elements" :key="element.name">
+      <template
+        v-for="element in category.elements"
+        :key="element.name"
+      >
         <FinderCategoryElement
           :element="element"
-          :set-active-folder="setActiveFolder"
           :folder-active="folderActive"
+          @setActiveFolder="emits('setActiveFolder', $event)"
         />
       </template>
     </div>

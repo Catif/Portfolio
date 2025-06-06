@@ -12,26 +12,26 @@ const props = defineProps({
     type: Array,
     required: true,
   },
-  setActiveFolder: {
-    type: Function,
-    required: true,
-  },
   folderActive: {
     type: String,
     required: true,
   },
 })
+
+const emits = defineEmits(["setActiveFolder"])
+
 const router = useRouter()
 const route = useRoute()
 const elementFocus = ref(null)
 const lang = computed(() => (route.params.lang ? route.params.lang : "fr"))
 
 function focusElement(element) {
-  if (!element.id) return
+  if (!element.id) {
+    elementFocus.value = null
+    return
+  }
 
   elementFocus.value = element
-
-  console.log(elementFocus.value)
 }
 
 function openElement(element) {
@@ -58,34 +58,35 @@ function openElement(element) {
         >
           <FinderCategory
             :category="category"
-            :set-active-folder="setActiveFolder"
             :folder-active="folderActive"
+            @setActiveFolder="emits('setActiveFolder', $event)"
           />
         </template>
       </div>
     </div>
-    <div class="right-side">
+    <div
+      class="right-side"
+      @click="focusElement({})"
+    >
       <div class="right-side__header">
         <h2>{{ $t("project.title") }}</h2>
       </div>
 
-      <div
-        class="right-side__content"
-        @click="focusElement({})"
-      >
+      <div class="right-side__content">
         <template
           v-for="project in props.projects"
           :key="project.blog_id"
         >
           <FinderElement
             :element="project"
-            :focus-element="focusElement"
             :element-focus="elementFocus"
-            :open-element="openElement"
+            @focusElement="focusElement"
+            @openElement="openElement"
           />
         </template>
       </div>
     </div>
+
     <div
       class="panel"
       v-if="elementFocus"
@@ -197,7 +198,6 @@ $background-folder: #232527;
       flex-wrap: wrap;
       gap: 10px;
       max-height: 66px;
-      overflow-y: auto;
       width: 100%;
 
       span {

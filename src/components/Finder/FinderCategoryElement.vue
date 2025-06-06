@@ -4,24 +4,25 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  setActiveFolder: {
-    type: Function,
-    required: true,
-  },
   folderActive: {
     type: String,
     required: true,
   },
 })
+
+const emits = defineEmits(["setActiveFolder"])
 </script>
 
 <template>
   <div
     class="category__element"
     :class="{ active: folderActive === element.name }"
-    @click="setActiveFolder(element.name)"
+    @click="emits('setActiveFolder', element.name)"
   >
-    <img :src="element.icon" alt="folder" />
+    <img
+      :src="element.icon"
+      alt="folder"
+    />
     <p>{{ element.name }}</p>
   </div>
 </template>
