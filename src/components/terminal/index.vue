@@ -173,7 +173,7 @@ watch(
 )
 
 onMounted(() => {
-  handleNewCommand("cd portfolio-element --id_project 14")
+  handleNewCommand("help")
 })
 
 function handleNewCommand(userCommand, event = null) {
@@ -383,8 +383,14 @@ function handleHistoryNavigation(direction) {
           />
 
           <span v-else-if="line.data.action === 'unknown'">
-            <span>zsh: Command not found: </span>
-            <span>{{ line.command }}</span>
+            <span>
+              <span class="accent">zsh</span>: Command not found:
+              {{ line.command }}
+            </span>
+            <br />
+            <span>
+              Try <span class="accent">help</span> to see available commands.
+            </span>
           </span>
         </div>
       </div>
