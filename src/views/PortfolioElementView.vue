@@ -33,66 +33,11 @@ const done_in = computed(() => {
 
   return `${month} ${year}`
 })
-
-function getProject(id) {
-  return api
-    .get(`/items/project/${id}?fields=*,translations.*`)
-    .then((response) => response.data)
-    .then((data) => {
-      data = data.data
-
-      project.id = data.id
-      project.main_picture = data.main_picture
-      project.is_solo_project = data.is_solo_project
-      project.done_at = data.done_at
-
-      const projectFr = data.translations.find(
-        (translation) => translation.languages_code === "fr-FR"
-      )
-      const projectEn = data.translations.find(
-        (translation) => translation.languages_code === "en-US"
-      )
-
-      project.fr = {
-        title: projectFr.title,
-        description: projectFr.description,
-        content: projectFr.content,
-        tags: projectFr.tags,
-      }
-
-      if (projectEn && projectEn.title && projectEn.content && projectEn.tags) {
-        project.en = {
-          title: projectEn.title,
-          description: projectEn.description,
-          content: projectEn.content,
-          tags: projectEn.tags,
-        }
-      } else {
-        project.en = {
-          title: projectFr.title,
-          description: projectFr.description,
-          content: projectFr.content,
-          tags: projectFr.tags,
-        }
-      }
-
-      state.value = "loaded"
-    })
-    .catch(() => {
-      state.value = "not-found"
-
-      setTimeout(() => {
-        if (
-          route.name === "portfolio-element" &&
-          route.params.id_project === id
-        )
-          router.push({ name: "portfolio", params: { lang: lang.value } })
-      }, 2000)
-    })
-}
+const timer = ref(3)
+const interval = ref(null)
 
 watch(lang, () => {
-  if (project.id) {
+  if (project?.id) {
     document.title = `Catif - ${project[lang.value].title}`
     // remove <br> in description
     const description = project[lang.value].description.replace(/<br>/g, " ")
@@ -111,12 +56,17 @@ watch(lang, () => {
   }
 })
 
-onMounted(() => {
-  const id = route.params.id_project
+watch(
+  () => route.params.id_project,
+  async (id) => {
+    if (!id) router.push({ name: "portfolio", params: { lang: lang.value } })
 
-  if (!id) router.push({ name: "portfolio", params: { lang: lang.value } })
+    const isOk = await getProject(id)
 
-  getProject(id).then(() => {
+    if (!isOk) {
+      return
+    }
+
     document.title = `Catif - ${project[lang.value].title}`
     // remove <br> in description
     const description = project[lang.value].description.replace(/<br>/g, " ")
@@ -132,8 +82,86 @@ onMounted(() => {
     document
       .querySelector('meta[name="keywords"]')
       .setAttribute("content", `${actualKeywords}, ${keywords}`)
-  })
+  },
+  { immediate: true }
+)
+
+onUnmounted(() => {
+  if (interval.value) clearInterval(interval.value)
 })
+
+async function getProject(id) {
+  try {
+    const { data: response } = await api.get(
+      `/items/project/${id}?fields=*,translations.*`
+    )
+
+    const data = response.data
+
+    project.id = data.id
+    project.main_picture = data.main_picture
+    project.is_solo_project = data.is_solo_project
+    project.done_at = data.done_at
+
+    const projectFr = data.translations.find(
+      (translation) => translation.languages_code === "fr-FR"
+    )
+    const projectEn = data.translations.find(
+      (translation) => translation.languages_code === "en-US"
+    )
+
+    project.fr = {
+      title: projectFr.title,
+      description: projectFr.description,
+      content: projectFr.content,
+      tags: projectFr.tags,
+    }
+
+    if (projectEn && projectEn.title && projectEn.content && projectEn.tags) {
+      project.en = {
+        title: projectEn.title,
+        description: projectEn.description,
+        content: projectEn.content,
+        tags: projectEn.tags,
+      }
+    } else {
+      project.en = {
+        title: projectFr.title,
+        description: projectFr.description,
+        content: projectFr.content,
+        tags: projectFr.tags,
+      }
+    }
+
+    state.value = "loaded"
+    return true
+  } catch (error) {
+    console.log("getProject cached", error)
+
+    if (error.response.status === 403) {
+      notFound()
+      return false
+    }
+  }
+}
+
+function notFound() {
+  state.value = "not-found"
+
+  timer.value = 3
+  interval.value = setInterval(() => {
+    console.log(timer.value)
+    if (timer.value <= 0) {
+      clearInterval(interval)
+      return
+    }
+    timer.value -= 1
+  }, 1000)
+
+  setTimeout(() => {
+    router.push({ name: "portfolio", params: { lang: lang.value } })
+  }, timer.value * 1000)
+}
 </script>
 
 <template>
@@ -151,7 +179,11 @@ onMounted(() => {
     <template v-else-if="state === 'not-found'">
       <div class="not-found">
         <div class="not-found__text">
-          {{ $t("project.project-not-found") }}
+          {{
+            $t("project.project-not-found", {
+              timer: timer,
+            })
+          }}
         </div>
       </div>
     </template>
@@ -167,31 +199,19 @@ onMounted(() => {
             <span class="team">
               <template v-if="project.is_solo_project">
                 {{ $t("project.solo-project") }}
-                <img
-                  src="/img/icons/user.svg"
-                  alt="solo icon"
-                />
+                <img src="/img/icons/user.svg" alt="solo icon" />
               </template>
               <template v-else>
                 {{ $t("project.team-project") }}
-                <img
-                  src="/img/icons/team.svg"
-                  alt="team icon"
-                />
+                <img src="/img/icons/team.svg" alt="team icon" />
               </template>
             </span>
-            <span
-              v-if="project.done_at"
-              class="date"
-            >
+            <span v-if="project.done_at" class="date">
               {{ $t("project.done-in") }} : {{ done_in }}
             </span>
             <div class="tags">
               Tags :
-              <template
-                v-for="tag in project[lang].tags"
-                :key="tag"
-              >
+              <template v-for="tag in project[lang].tags" :key="tag">
                 <span class="tag">
                   {{ tag }}
                 </span>
@@ -206,10 +226,7 @@ onMounted(() => {
           </div>
         </div>
         <hr />
-        <Markdown
-          class="Project__content"
-          :markdown="contentMarkdown"
-        />
+        <Markdown class="Project__content" :markdown="contentMarkdown" />
       </article>
     </template>
   </section>

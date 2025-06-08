@@ -19,12 +19,13 @@ I define myself as a full-stack developer because I can create websites from A t
 
 Apart from development, I have a few hobbies that are dear to me.
 
-- **Sport**: You'll often find me mountain biking 🚵
-- **Video games**: 
+- **Sports**:
+  - Mountain Bike 🚵
+  - Running
+- **Video games**:
   - Master on Apex Legends
   - Grand Champion on Rocket League
   - Favorite game: Celeste 🍓
-  - Current game: Dofus 3.0
-- **Manga/Anime**: 
+- **Manga/Anime**:
   - Favorite manga: Ascension ⛰️
   - Favorite anime: Kaiji 🎲

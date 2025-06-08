@@ -1,5 +1,5 @@
 <script setup>
-const infos = ref([
+const infos = [
   {
     property: "Age",
     value: "23",
@@ -34,7 +34,7 @@ const infos = ref([
     value:
       "<a href='https://www.linkedin.com/in/bradley-barbier/'>bradley-barbier</a>",
   },
-])
+]
 </script>
 
 <template>
@@ -69,15 +69,9 @@ const infos = ref([
       <span>
         <span>---------------</span>
       </span>
-      <span
-        v-for="info in infos"
-        :key="info.property"
-      >
+      <span v-for="info in infos" :key="info.property">
         <span class="accent"> {{ info.property }}: </span>
-        <span
-          class="value"
-          v-html="info.value"
-        />
+        <span class="value" v-html="info.value" />
       </span>
     </div>
   </div>
@@ -93,6 +87,7 @@ const infos = ref([
     flex-direction: column;
     gap: 5px;
     color: #ccc;
+    text-wrap: nowrap;
   }
 }
 </style>

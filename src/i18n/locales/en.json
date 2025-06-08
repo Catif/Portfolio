@@ -34,7 +34,7 @@
     "see-more": "See more",
     "solo-project": "Solo project",
     "team-project": "Team project",
-    "project-not-found": "Project not found, you will be redirected to the list of projects in 2 seconds...",
+    "project-not-found": "Project not found, you will be redirected to the list of projects in {timer} seconds...",
     "done-in": "Done in",
     "finder": {
       "categories": {

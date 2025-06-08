@@ -19,12 +19,13 @@ Je m'auto-définis comme un développeur full stack, car je suis capable de fair
 
 En dehors du développement, j'ai quelques hobbies qui me tiennent à coeur.
 
-- **Sport**: Vous me verrez souvent faire du VTT 🚵
-- **Jeux vidéos**: 
+- **Sports**:
+  - VTT 🚵
+  - Trail
+- **Jeux vidéos**:
   - Master sur Apex Legends
   - Grand Champion sur Rocket League
   - Jeux préféré: Celeste 🍓
-  - Jeux du moment: Dofus 3.0
-- **Manga/Anime**: 
-  -  Manga préféré️: Ascension ⛰️
-  -  Anime préféré: Kaij️i 🎲
+- **Manga/Anime**:
+  - Manga préféré️: Ascension ⛰️
+  - Anime préféré: Kaij️i 🎲
